@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:4000";
 
 export default function LoginPage() {
   const [identifier, setIdentifier] = useState("");
@@ -16,7 +16,8 @@ export default function LoginPage() {
       const res = await fetch(`${API_BASE}/login`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         credentials: "include",
         body: JSON.stringify({ identifier, password })
@@ -27,8 +28,14 @@ export default function LoginPage() {
         throw new Error(text || "Login failed");
       }
 
-      // Backend should redirect based on role; here we optimistically try both dashboards
-      window.location.href = "/student";
+      const data = await res.json();
+      console.log("Login response:", data);
+      if (data.ok && data.role) {
+        console.log(`Redirecting to /${data.role}`);
+        window.location.href = `/${data.role}`;
+      } else {
+        throw new Error("Login failed: " + JSON.stringify(data));
+      }
     } catch (err) {
       setError(err.message || "Login failed");
     } finally {

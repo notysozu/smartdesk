@@ -1,4 +1,5 @@
 const Topic = require("../data/topic.model");
+const User = require("../models/User");
 
 const CATEGORIES = [
   "Academics",
@@ -97,5 +98,95 @@ exports.analyticsJson = async (req, res) => {
   } catch (err) {
     console.error("Analytics JSON error:", err);
     res.status(500).json({ error: "Failed to load analytics" });
+  }
+};
+
+// User Management
+exports.getUsers = async (req, res) => {
+  try {
+    const users = await User.find().select("-password");
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.createUser = async (req, res) => {
+  try {
+    const { username, email, password, role } = req.body;
+    const user = new User({ username, email, password, role });
+    await user.save();
+    res.status(201).json({ message: "User created successfully" });
+  } catch (error) {
+    if (error.code === 11000) {
+      res.status(400).json({ message: "Username or email already exists" });
+    } else {
+      res.status(500).json({ message: "Server error" });
+    }
+  }
+};
+
+exports.updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updates = req.body;
+    if (updates.password) {
+      const bcrypt = require("bcryptjs");
+      updates.password = await bcrypt.hash(updates.password, 12);
+    }
+    await User.findByIdAndUpdate(id, updates);
+    res.json({ message: "User updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await User.findByIdAndDelete(id);
+    res.json({ message: "User deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+// Topic Management
+exports.getTopics = async (req, res) => {
+  try {
+    const topics = await Topic.find();
+    res.json(topics);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.createTopic = async (req, res) => {
+  try {
+    const topic = new Topic(req.body);
+    await topic.save();
+    res.status(201).json({ message: "Topic created successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.updateTopic = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Topic.findByIdAndUpdate(id, req.body);
+    res.json({ message: "Topic updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.deleteTopic = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Topic.findByIdAndDelete(id);
+    res.json({ message: "Topic deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
   }
 };

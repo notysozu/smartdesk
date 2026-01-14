@@ -1,12 +1,13 @@
 {
-  "name": "smart-desk",
+  "name": "smartdesk",
   "version": "1.0.0",
   "description": "AI-powered student feedback platform for Sapthagiri NPS University",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon server/index.js"
+    "dev": "nodemon server/index.js",
+    "seed": "node server/seed.js"
   },
   "keywords": [
     "hackathon",
@@ -15,9 +16,10 @@
     "express",
     "gemini"
   ],
-  "author": "Smart Desk Team",
+  "author": "rynixofficial",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.5",

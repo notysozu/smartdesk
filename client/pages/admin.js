@@ -1,5 +1,7 @@
 import { fetchWithAuth } from "../lib/api";
 import { BarChart, LineChart } from "../components/Charts";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 export async function getServerSideProps(context) {
   try {
@@ -26,6 +28,45 @@ export async function getServerSideProps(context) {
 }
 
 export default function AdminDashboard({ analytics, insights, selectedCategory }) {
+  const router = useRouter();
+  const [users, setUsers] = useState([]);
+  const [topics, setTopics] = useState([]);
+  const [activeTab, setActiveTab] = useState('analytics');
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/logout', { method: 'POST' });
+      router.push('/login');
+    } catch (error) {
+      console.error('Logout failed', error);
+    }
+  };
+
+  useEffect(() => {
+    if (activeTab === 'users') fetchUsers();
+    if (activeTab === 'topics') fetchTopics();
+  }, [activeTab]);
+
+  const fetchUsers = async () => {
+    try {
+      const res = await fetch('/api/admin/users');
+      const data = await res.json();
+      setUsers(data);
+    } catch (error) {
+      console.error('Failed to fetch users', error);
+    }
+  };
+
+  const fetchTopics = async () => {
+    try {
+      const res = await fetch('/api/admin/topics');
+      const data = await res.json();
+      setTopics(data);
+    } catch (error) {
+      console.error('Failed to fetch topics', error);
+    }
+  };
+
   const {
     totalSubmissions,
     categoryDistribution,
@@ -45,59 +86,71 @@ export default function AdminDashboard({ analytics, insights, selectedCategory }
   });
   const weeklyValues = (weeklyTrends || []).map((t) => t.count || 0);
 
-  return (
-    <main style={{ padding: "2.5rem 1.5rem", maxWidth: 1120, margin: "0 auto" }}>
-      <header style={{ marginBottom: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div>
-          <h2 style={{ marginBottom: 4 }}>Admin Analytics</h2>
-          <p style={{ color: "#6b7280", fontSize: 14 }}>
-            Monitor submissions, categories, and weekly trends.
-          </p>
-        </div>
-        <a href="/" style={{ fontSize: 13, color: "#4b5563" }}>
-          Back to landing
-        </a>
-      </header>
+  if (activeTab === 'analytics') {
+    return (
+      <main style={{ padding: "2.5rem 1.5rem", maxWidth: 1120, margin: "0 auto" }}>
+        <header style={{ marginBottom: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div>
+            <h2 style={{ marginBottom: 4 }}>Admin Panel</h2>
+            <p style={{ color: "#6b7280", fontSize: 14 }}>
+              Manage analytics, users, and topics.
+            </p>
+          </div>
+          <div>
+            <button onClick={() => handleLogout()} style={{ fontSize: 13, color: "#4b5563", marginRight: 16, background: 'none', border: 'none', cursor: 'pointer' }}>
+              Logout
+            </button>
+            <a href="/" style={{ fontSize: 13, color: "#4b5563" }}>
+              Back to landing
+            </a>
+          </div>
+        </header>
 
-      <section style={{ marginBottom: "1.75rem", display: "flex", justifyContent: "flex-end" }}>
-        <form method="GET" action="/admin">
-          <label style={{ fontSize: 13, marginRight: 8 }}>Category</label>
-          <select
-            name="category"
-            defaultValue={selectedCategory === "All" ? "" : selectedCategory}
-            onChange={(e) => e.target.form.submit()}
-            style={{
-              padding: "0.4rem 0.75rem",
-              borderRadius: 999,
-              border: "1px solid #d1d5db",
-              fontSize: 13
-            }}
-          >
-            <option value="">All</option>
-            <option value="Academics">Academics</option>
-            <option value="Faculty">Faculty</option>
-            <option value="Infrastructure">Infrastructure</option>
-            <option value="Hostel">Hostel</option>
-            <option value="Administration">Administration</option>
-            <option value="Other">Other</option>
-          </select>
-        </form>
-      </section>
+        <nav style={{ marginBottom: "2rem" }}>
+          <button onClick={() => setActiveTab('analytics')} style={{ marginRight: 16, padding: '8px 16px', border: activeTab === 'analytics' ? '1px solid #000' : '1px solid #ccc', background: activeTab === 'analytics' ? '#f0f0f0' : 'white' }}>Analytics</button>
+          <button onClick={() => setActiveTab('users')} style={{ marginRight: 16, padding: '8px 16px', border: activeTab === 'users' ? '1px solid #000' : '1px solid #ccc', background: activeTab === 'users' ? '#f0f0f0' : 'white' }}>Users</button>
+          <button onClick={() => setActiveTab('topics')} style={{ padding: '8px 16px', border: activeTab === 'topics' ? '1px solid #000' : '1px solid #ccc', background: activeTab === 'topics' ? '#f0f0f0' : 'white' }}>Topics</button>
+        </nav>
 
-      <section
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-          gap: "1.25rem",
-          marginBottom: "2rem"
-        }}
-      >
-        <div style={{ background: "#fff", padding: "1.25rem 1.5rem", borderRadius: 16, boxShadow: "0 14px 32px rgba(15,23,42,0.08)" }}>
-          <p style={{ fontSize: 13, color: "#6b7280", marginBottom: 4 }}>
-            Total submissions {selectedCategory !== "All" && `(${selectedCategory})`}
-          </p>
-          <div style={{ fontSize: 28, fontWeight: 700 }}>{totalSubmissions}</div>
-        </div>
+        <section style={{ marginBottom: "1.75rem", display: "flex", justifyContent: "flex-end" }}>
+          <form method="GET" action="/admin">
+            <label style={{ fontSize: 13, marginRight: 8 }}>Category</label>
+            <select
+              name="category"
+              defaultValue={selectedCategory === "All" ? "" : selectedCategory}
+              onChange={(e) => e.target.form.submit()}
+              style={{
+                padding: "0.4rem 0.75rem",
+                borderRadius: 999,
+                border: "1px solid #d1d5db",
+                fontSize: 13
+              }}
+            >
+              <option value="">All</option>
+              <option value="Academics">Academics</option>
+              <option value="Faculty">Faculty</option>
+              <option value="Infrastructure">Infrastructure</option>
+              <option value="Hostel">Hostel</option>
+              <option value="Administration">Administration</option>
+              <option value="Other">Other</option>
+            </select>
+          </form>
+        </section>
+
+        <section
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+            gap: "1.25rem",
+            marginBottom: "2rem"
+          }}
+        >
+          <div style={{ background: "#fff", padding: "1.25rem 1.5rem", borderRadius: 16, boxShadow: "0 14px 32px rgba(15,23,42,0.08)" }}>
+            <p style={{ fontSize: 13, color: "#6b7280", marginBottom: 4 }}>
+              Total submissions {selectedCategory !== "All" && `(${selectedCategory})`}
+            </p>
+            <div style={{ fontSize: 28, fontWeight: 700 }}>{totalSubmissions}</div>
+          </div>
         <div style={{ background: "#fff", padding: "1.25rem 1.5rem", borderRadius: 16, boxShadow: "0 14px 32px rgba(15,23,42,0.08)" }}>
           <p style={{ fontSize: 13, color: "#6b7280", marginBottom: 4 }}>Active categories</p>
           <div style={{ fontSize: 28, fontWeight: 700 }}>
@@ -286,5 +339,116 @@ export default function AdminDashboard({ analytics, insights, selectedCategory }
       </section>
     </main>
   );
+  } else if (activeTab === 'users') {
+    return (
+      <main style={{ padding: "2.5rem 1.5rem", maxWidth: 1120, margin: "0 auto" }}>
+        <header style={{ marginBottom: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div>
+            <h2 style={{ marginBottom: 4 }}>Admin Panel</h2>
+            <p style={{ color: "#6b7280", fontSize: 14 }}>
+              Manage analytics, users, and topics.
+            </p>
+          </div>
+          <div>
+            <button onClick={() => handleLogout()} style={{ fontSize: 13, color: "#4b5563", marginRight: 16, background: 'none', border: 'none', cursor: 'pointer' }}>
+              Logout
+            </button>
+            <a href="/" style={{ fontSize: 13, color: "#4b5563" }}>
+              Back to landing
+            </a>
+          </div>
+        </header>
+
+        <nav style={{ marginBottom: "2rem" }}>
+          <button onClick={() => setActiveTab('analytics')} style={{ marginRight: 16, padding: '8px 16px', border: activeTab === 'analytics' ? '1px solid #000' : '1px solid #ccc', background: activeTab === 'analytics' ? '#f0f0f0' : 'white' }}>Analytics</button>
+          <button onClick={() => setActiveTab('users')} style={{ marginRight: 16, padding: '8px 16px', border: activeTab === 'users' ? '1px solid #000' : '1px solid #ccc', background: activeTab === 'users' ? '#f0f0f0' : 'white' }}>Users</button>
+          <button onClick={() => setActiveTab('topics')} style={{ padding: '8px 16px', border: activeTab === 'topics' ? '1px solid #000' : '1px solid #ccc', background: activeTab === 'topics' ? '#f0f0f0' : 'white' }}>Topics</button>
+        </nav>
+
+        <section>
+          <h3>Users</h3>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+            <thead>
+              <tr style={{ textAlign: "left", color: "#6b7280", fontSize: 12 }}>
+                <th style={{ padding: "0.5rem 0" }}>Username</th>
+                <th style={{ padding: "0.5rem 0" }}>Email</th>
+                <th style={{ padding: "0.5rem 0" }}>Role</th>
+                <th style={{ padding: "0.5rem 0" }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user._id}>
+                  <td style={{ padding: "0.6rem 0", borderBottom: "1px solid #f3f4f6" }}>{user.username}</td>
+                  <td style={{ padding: "0.6rem 0", borderBottom: "1px solid #f3f4f6" }}>{user.email}</td>
+                  <td style={{ padding: "0.6rem 0", borderBottom: "1px solid #f3f4f6" }}>{user.role}</td>
+                  <td style={{ padding: "0.6rem 0", borderBottom: "1px solid #f3f4f6" }}>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      </main>
+    );
+  } else if (activeTab === 'topics') {
+    return (
+      <main style={{ padding: "2.5rem 1.5rem", maxWidth: 1120, margin: "0 auto" }}>
+        <header style={{ marginBottom: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div>
+            <h2 style={{ marginBottom: 4 }}>Admin Panel</h2>
+            <p style={{ color: "#6b7280", fontSize: 14 }}>
+              Manage analytics, users, and topics.
+            </p>
+          </div>
+          <div>
+            <button onClick={() => handleLogout()} style={{ fontSize: 13, color: "#4b5563", marginRight: 16, background: 'none', border: 'none', cursor: 'pointer' }}>
+              Logout
+            </button>
+            <a href="/" style={{ fontSize: 13, color: "#4b5563" }}>
+              Back to landing
+            </a>
+          </div>
+        </header>
+
+        <nav style={{ marginBottom: "2rem" }}>
+          <button onClick={() => setActiveTab('analytics')} style={{ marginRight: 16, padding: '8px 16px', border: activeTab === 'analytics' ? '1px solid #000' : '1px solid #ccc', background: activeTab === 'analytics' ? '#f0f0f0' : 'white' }}>Analytics</button>
+          <button onClick={() => setActiveTab('users')} style={{ marginRight: 16, padding: '8px 16px', border: activeTab === 'users' ? '1px solid #000' : '1px solid #ccc', background: activeTab === 'users' ? '#f0f0f0' : 'white' }}>Users</button>
+          <button onClick={() => setActiveTab('topics')} style={{ padding: '8px 16px', border: activeTab === 'topics' ? '1px solid #000' : '1px solid #ccc', background: activeTab === 'topics' ? '#f0f0f0' : 'white' }}>Topics</button>
+        </nav>
+
+        <section>
+          <h3>Topics</h3>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+            <thead>
+              <tr style={{ textAlign: "left", color: "#6b7280", fontSize: 12 }}>
+                <th style={{ padding: "0.5rem 0" }}>Topic</th>
+                <th style={{ padding: "0.5rem 0" }}>Description</th>
+                <th style={{ padding: "0.5rem 0" }}>Category</th>
+                <th style={{ padding: "0.5rem 0" }}>Votes</th>
+                <th style={{ padding: "0.5rem 0" }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topics.map((topic) => (
+                <tr key={topic._id}>
+                  <td style={{ padding: "0.6rem 0", borderBottom: "1px solid #f3f4f6" }}>{topic.topic}</td>
+                  <td style={{ padding: "0.6rem 0", borderBottom: "1px solid #f3f4f6" }}>{topic.description}</td>
+                  <td style={{ padding: "0.6rem 0", borderBottom: "1px solid #f3f4f6" }}>{topic.category}</td>
+                  <td style={{ padding: "0.6rem 0", borderBottom: "1px solid #f3f4f6" }}>{topic.votes}</td>
+                  <td style={{ padding: "0.6rem 0", borderBottom: "1px solid #f3f4f6" }}>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      </main>
+    );
+  }
 }
 
