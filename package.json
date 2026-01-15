@@ -1,20 +1,29 @@
 {
   "name": "smartdesk",
-  "version": "1.0.0",
-  "description": "AI-powered student feedback platform for Sapthagiri NPS University",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "Complete University Management System with 200+ Features - AI-Powered",
+  "main": "server/index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server/index.js",
     "dev": "nodemon server/index.js",
-    "seed": "node server/seed.js"
+    "seed": "node server/seed.js",
+    "client:dev": "cd client && npm run dev",
+    "client:build": "cd client && npm run build",
+    "client:start": "cd client && npm start"
   },
   "keywords": [
-    "hackathon",
-    "student-feedback",
-    "ai",
+    "university-management",
+    "student-portal",
+    "academic-system",
+    "library-management",
+    "attendance-system",
+    "financial-management",
+    "ai-analytics",
     "express",
-    "gemini"
+    "nextjs",
+    "mongodb",
+    "ollama"
   ],
   "author": "rynixofficial",
   "license": "MIT",
@@ -23,7 +32,6 @@
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.5",
-    "ejs": "^3.1.9",
     "express": "^4.19.2",
     "express-rate-limit": "^8.2.1",
     "express-validator": "^7.3.1",

@@ -1,4 +1,4 @@
-const Topic = require("../data/topic.model");
+const Topic = require("../models/Topic");
 const User = require("../models/User");
 
 const CATEGORIES = [
@@ -7,19 +7,17 @@ const CATEGORIES = [
   "Infrastructure",
   "Hostel",
   "Administration",
-  "Other",
+  "Other"
 ];
 
 async function buildAnalytics(matchFilter, selected) {
-  /* 1. Total submissions (respecting category filter if applied) */
   const totalSubmissions = await Topic.countDocuments(matchFilter);
 
-  /* 2. Top topics by votes */
   const topTopics = await Topic.find(matchFilter)
     .sort({ votes: -1 })
-    .limit(5);
+    .limit(5)
+    .populate("createdBy", "username email");
 
-  /* 3. Category distribution (within current filter scope) */
   const categoryPipeline = [];
   if (Object.keys(matchFilter).length) {
     categoryPipeline.push({ $match: matchFilter });
@@ -27,13 +25,12 @@ async function buildAnalytics(matchFilter, selected) {
   categoryPipeline.push({
     $group: {
       _id: "$category",
-      count: { $sum: 1 },
-    },
+      count: { $sum: 1 }
+    }
   });
 
   const categoryDistribution = await Topic.aggregate(categoryPipeline);
 
-  /* 4. Weekly trend (last 7 days, respecting category filter) */
   const now = new Date();
   const sevenDaysAgo = new Date(
     now.getFullYear(),
@@ -43,7 +40,7 @@ async function buildAnalytics(matchFilter, selected) {
 
   const weeklyMatch = {
     createdAt: { $gte: sevenDaysAgo },
-    ...matchFilter,
+    ...matchFilter
   };
 
   const weeklyTrends = await Topic.aggregate([
@@ -53,18 +50,18 @@ async function buildAnalytics(matchFilter, selected) {
         _id: {
           year: { $year: "$createdAt" },
           month: { $month: "$createdAt" },
-          day: { $dayOfMonth: "$createdAt" },
+          day: { $dayOfMonth: "$createdAt" }
         },
-        count: { $sum: 1 },
-      },
+        count: { $sum: 1 }
+      }
     },
     {
       $sort: {
         "_id.year": 1,
         "_id.month": 1,
-        "_id.day": 1,
-      },
-    },
+        "_id.day": 1
+      }
+    }
   ]);
 
   return {
@@ -72,15 +69,13 @@ async function buildAnalytics(matchFilter, selected) {
     topTopics,
     categoryDistribution,
     weeklyTrends,
-    selectedCategory: selected,
+    selectedCategory: selected
   };
 }
 
-exports.dashboard = async (req, res) => {
-  // Legacy EJS dashboard removed. Keep route for backward compatibility by returning JSON.
-  return exports.analyticsJson(req, res);
-};
-
+/**
+ * Get analytics JSON (admin only)
+ */
 exports.analyticsJson = async (req, res) => {
   try {
     const selected =
@@ -89,104 +84,90 @@ exports.analyticsJson = async (req, res) => {
         ? req.query.category
         : "All";
 
-    const matchFilter =
-      selected === "All" ? {} : { category: selected };
+    const matchFilter = selected === "All" ? {} : { category: selected };
 
     const analytics = await buildAnalytics(matchFilter, selected);
 
-    res.json(analytics);
+    // Format for charts
+    const categoryChartData = {
+      labels: CATEGORIES,
+      counts: CATEGORIES.map(
+        (cat) =>
+          analytics.categoryDistribution.find((d) => d._id === cat)?.count || 0
+      )
+    };
+
+    const weeklyChartData = {
+      labels: [],
+      counts: []
+    };
+
+    const now = new Date();
+    const sevenDaysAgo = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate() - 6
+    );
+
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(sevenDaysAgo);
+      date.setDate(date.getDate() + i);
+      weeklyChartData.labels.push(dayNames[date.getDay()]);
+      const dayData = analytics.weeklyTrends.find(
+        (t) =>
+          t._id.year === date.getFullYear() &&
+          t._id.month === date.getMonth() + 1 &&
+          t._id.day === date.getDate()
+      );
+      weeklyChartData.counts.push(dayData?.count || 0);
+    }
+
+    res.json({
+      ...analytics,
+      categoryChartData,
+      weeklyChartData,
+      categories: ["All", ...CATEGORIES]
+    });
   } catch (err) {
     console.error("Analytics JSON error:", err);
     res.status(500).json({ error: "Failed to load analytics" });
   }
 };
 
-// User Management
-exports.getUsers = async (req, res) => {
+/**
+ * Get dashboard stats (admin only)
+ */
+exports.getDashboardStats = async (req, res) => {
   try {
-    const users = await User.find().select("-password");
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-};
+    const [
+      totalUsers,
+      totalTopics,
+      totalVotes,
+      activeUsers,
+      recentTopics
+    ] = await Promise.all([
+      User.countDocuments(),
+      Topic.countDocuments(),
+      Topic.aggregate([{ $group: { _id: null, total: { $sum: "$votes" } } }]),
+      User.countDocuments({ isActive: true }),
+      Topic.find()
+        .sort({ createdAt: -1 })
+        .limit(5)
+        .populate("createdBy", "username email")
+    ]);
 
-exports.createUser = async (req, res) => {
-  try {
-    const { username, email, password, role } = req.body;
-    const user = new User({ username, email, password, role });
-    await user.save();
-    res.status(201).json({ message: "User created successfully" });
-  } catch (error) {
-    if (error.code === 11000) {
-      res.status(400).json({ message: "Username or email already exists" });
-    } else {
-      res.status(500).json({ message: "Server error" });
-    }
-  }
-};
-
-exports.updateUser = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const updates = req.body;
-    if (updates.password) {
-      const bcrypt = require("bcryptjs");
-      updates.password = await bcrypt.hash(updates.password, 12);
-    }
-    await User.findByIdAndUpdate(id, updates);
-    res.json({ message: "User updated successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-};
-
-exports.deleteUser = async (req, res) => {
-  try {
-    const { id } = req.params;
-    await User.findByIdAndDelete(id);
-    res.json({ message: "User deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-};
-
-// Topic Management
-exports.getTopics = async (req, res) => {
-  try {
-    const topics = await Topic.find();
-    res.json(topics);
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-};
-
-exports.createTopic = async (req, res) => {
-  try {
-    const topic = new Topic(req.body);
-    await topic.save();
-    res.status(201).json({ message: "Topic created successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-};
-
-exports.updateTopic = async (req, res) => {
-  try {
-    const { id } = req.params;
-    await Topic.findByIdAndUpdate(id, req.body);
-    res.json({ message: "Topic updated successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-};
-
-exports.deleteTopic = async (req, res) => {
-  try {
-    const { id } = req.params;
-    await Topic.findByIdAndDelete(id);
-    res.json({ message: "Topic deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.json({
+      stats: {
+        totalUsers,
+        totalTopics,
+        totalVotes: totalVotes[0]?.total || 0,
+        activeUsers,
+        recentTopics
+      }
+    });
+  } catch (err) {
+    console.error("Dashboard stats error:", err);
+    res.status(500).json({ error: "Failed to load dashboard stats" });
   }
 };

@@ -1,9 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const { loginLimiter } = require("../middleware/rateLimit.middleware");
+const { rateLimit, securityHeaders, optionalAuth, protect } = require("../middleware/auth.middleware");
 const authController = require("../controllers/auth.controller");
 
-router.post("/login", loginLimiter, authController.login);
-router.post("/logout", authController.logout);
+// Apply security headers
+router.use(securityHeaders);
+
+// Login route with rate limiting
+router.post("/login", rateLimit, authController.login);
+
+// Logout route
+router.get("/logout", optionalAuth, authController.logout);
+router.post("/logout", optionalAuth, authController.logout);
+
+// Get current user (requires authentication)
+router.get("/api/auth/me", protect(), authController.getMe);
+
+// Change password (requires authentication)
+router.post("/api/auth/change-password", protect(), authController.changePassword);
+
+// Refresh token
+router.post("/api/auth/refresh", authController.refreshToken);
 
 module.exports = router;
