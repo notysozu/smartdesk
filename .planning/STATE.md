@@ -1,4 +1,4 @@
 # Project State
 
-Current Phase: 1
-Status: Not Started
+Current Phase: 2
+Status: Planned
