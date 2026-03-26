@@ -1,87 +1,50 @@
 # SmartDesk
 
-**Complete University Management System with 200+ Features**
+> A full-stack university management platform with role-based workflows, operational dashboards, and feedback analytics.
 
-AI-Powered Student Feedback Intelligence Platform evolved into a comprehensive university management system.
+[![CI](https://github.com/notysozu/smartdesk/actions/workflows/ci.yml/badge.svg)](https://github.com/notysozu/smartdesk/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-Made with 💚 by [rynixofficial](https://github.com/rynixsnpsu)
+SmartDesk brings student services, academic administration, campus operations, and analytics into one system. It combines an Express + MongoDB backend with a Next.js frontend to support dashboards, announcements, attendance, finance, library workflows, hostel management, and AI-assisted insight generation.
 
-## Live Deployment
+## Overview
 
-- Frontend: https://client-tau-lemon.vercel.app
+Universities often manage academic data, student services, and administrative workflows across disconnected tools. SmartDesk aims to centralize those workflows in a single platform so institutions can:
 
-## Purpose
+- manage multiple roles from one application
+- reduce operational friction across departments
+- surface actionable insights from student feedback and reporting data
+- provide a unified experience for students, faculty, and admins
 
-SmartDesk is designed to give universities a single platform for academic operations,
-student services, administration, and feedback-driven insights.
+## Features
 
-## Goals
+- Multi-role access for admins, academic managers, faculty, students, librarians, and other campus staff
+- Unified student dashboard for courses, attendance, fees, library activity, events, and announcements
+- Admin modules for users, topics, configuration, finance, hostel, infrastructure, and academic workflows
+- AI-assisted insights powered by local Ollama integration for feedback summarization
+- Role-based authentication with JWT, secure cookies, rate limiting, and security headers
+- Seeded demo users for local evaluation and onboarding
 
-- Centralize campus operations in one system
-- Provide role-based experiences for students, faculty, and administrators
-- Improve operational visibility with analytics and reporting
-- Support local-first AI-assisted insight generation without locking the project to external SaaS tools
+## Demo / Preview
 
-## 🚀 Features
+- Live frontend: https://client-tau-lemon.vercel.app
+- Screenshots: add dashboard screenshots here
+- GIF walkthroughs: add short admin/student workflow demos here
 
-### Core Features (200+)
-- **Multi-Role System**: 10 different user roles (Super Admin, Admin, Academic Manager, Faculty, Student, etc.)
-- **Student Dashboard**: Unified portal with courses, attendance, fees, library, events, feedback
-- **Admin Panel**: Complete management interface with analytics, user management, configuration
-- **Academic Management**: Departments, courses, enrollments, grades, transcripts
-- **Attendance System**: Mark attendance, reports, analytics, notifications
-- **Financial Management**: Fee collection, scholarships, payment tracking
-- **Library Management**: Book catalog, issue/return, reservations, fines
-- **Hostel Management**: Room allocation, maintenance, fee management
-- **Event Management**: Create events, registrations, notifications
-- **Announcement System**: Targeted announcements, categories, priority levels
-- **Infrastructure Management**: Buildings, rooms, facilities, maintenance
-- **AI-Powered Analytics**: Local Gemma model via Ollama for insights and categorization
-- **Real-Time Dashboards**: Comprehensive analytics with interactive charts
-- **Black Neon Theme**: Modern dark UI with neon accents
-- **Production Ready**: Secure authentication, role-based access, error handling
+## Installation
 
-### Security Features
-- JWT authentication with HTTP-only cookies
-- Role-based access control (RBAC)
-- Password hashing with bcrypt
-- Account lockout protection
-- Rate limiting
-- Security headers
-- Audit logging ready
+### Requirements
 
-## ✅ Current Status - FULLY FUNCTIONAL
+| Requirement | Version / Notes |
+| --- | --- |
+| Node.js | 20+ |
+| npm | bundled with Node.js |
+| MongoDB | local or cloud instance |
+| Ollama | optional, only needed for local AI summary features |
 
-**All major systems are working and ready for production:**
+### One-command installers
 
-- ✅ **Authentication System**: Login/logout, role-based access, JWT tokens
-- ✅ **Student Dashboard**: Complete with courses, attendance, fees, library, events
-- ✅ **Announcements System**: Public announcements display correctly in student dashboard
-- ✅ **Admin Panel**: User management, analytics, configuration
-- ✅ **Database**: MongoDB with 18 models, seeded with sample data
-- ✅ **API Endpoints**: 100+ endpoints with proper protection and error handling
-- ✅ **Frontend**: Next.js with Tailwind CSS, responsive design
-- ✅ **Security**: Rate limiting, CORS, input validation, audit logging
-- ✅ **Sample Data**: Default users and announcements available after seeding
-
-## Additional Docs
-
-- [Contributing Guide](./CONTRIBUTING.md)
-- [Code of Conduct](./CODE_OF_CONDUCT.md)
-- [Security Policy](./SECURITY.md)
-- [License](./LICENSE)
-
-## Prerequisites
-
-- Node.js 20+
-- MongoDB (local or cloud)
-- Ollama (optional, for AI features)
-
-## One-Command Install
-
-Security note:
-- Review remote scripts before using pipe-to-shell installers.
-- These commands create `.env` and `client/.env.local` from the example files if they do not already exist.
+Review remote scripts before using pipe-to-shell installers in production or shared environments.
 
 Linux / macOS:
 
@@ -104,8 +67,8 @@ iwr https://raw.githubusercontent.com/notysozu/smartdesk/main/install.ps1 -UseBa
 Useful installer options:
 
 - `START_APP=0` skips launching the app after install
-- `SEED_DB=1` seeds the default SmartDesk users after dependencies are installed
-- `INSTALL_DIR=/custom/path` installs the repo into a custom folder when cloning
+- `SEED_DB=1` seeds demo users after dependencies are installed
+- `INSTALL_DIR=/custom/path` clones the repo into a custom location
 
 Example:
 
@@ -113,214 +76,160 @@ Example:
 curl -fsSL https://raw.githubusercontent.com/notysozu/smartdesk/main/install.sh | START_APP=0 SEED_DB=1 bash
 ```
 
-## Installation
+### Manual setup
 
-### Backend Setup
-
-```bash
-# Install dependencies
-npm install
-
-# Copy environment file
-cp .env.example .env
-
-# Edit .env with your configuration
-# MONGO_URI=mongodb://localhost:27017/smartdesk
-# JWT_SECRET=your-secret-key
-# CLIENT_ORIGIN=http://localhost:3000
-
-# Seed database with default users (optional)
-npm run seed
-
-# Start development server
-npm run dev
-```
-
-### Frontend Setup
-
-```bash
-cd client
-
-# Install dependencies
-npm install
-
-# Copy the frontend environment file if needed
-cp .env.example .env.local
-
-# Start development server
-npm run dev
-```
-
-### Manual Install Fallback
-
-1. Install Git and Node.js 20+.
-2. Clone the repo:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/notysozu/smartdesk.git
 cd smartdesk
 ```
 
-3. Copy the environment templates:
+2. Create environment files:
 
 ```bash
 cp .env.example .env
 cp client/.env.example client/.env.local
 ```
 
-4. Install backend and frontend dependencies:
+3. Install backend and frontend dependencies:
 
 ```bash
 npm install
 cd client && npm install && cd ..
 ```
 
-5. Start the backend and frontend in separate terminals:
+4. Start the backend and frontend in separate terminals:
 
 ```bash
 npm run dev
 cd client && npm run dev
 ```
 
-## Default Users
+5. Open the app at `http://localhost:3000`.
 
-After running `npm run seed`:
+### Environment setup
 
-- **Admin**: `admin` / `admin123`
-- **Student**: `student` / `student123`
-- **Librarian**: `librarian` / `lib123`
-- **Hostel Manager**: `hostel_manager` / `hostel123`
-- **Finance Manager**: `finance_manager` / `finance123`
-- **Academic Manager**: `academic_manager` / `academic123`
-- **Faculty**: `faculty` / `faculty123`
+Backend variables live in [`.env.example`](./.env.example). Frontend variables live in [`client/.env.example`](./client/.env.example).
+
+Typical local values:
+
+```env
+MONGO_URI=mongodb://localhost:27017/smartdesk
+JWT_SECRET=change-this-secret
+CLIENT_ORIGIN=http://localhost:3000
+NEXT_PUBLIC_API_BASE_URL=http://localhost:4000
+```
 
 ## Usage
 
-### Local Development
+### Local development
 
-Run the backend and frontend in separate terminals:
+Backend:
 
 ```bash
 npm run dev
+```
+
+Frontend:
+
+```bash
 cd client && npm run dev
 ```
 
-Then open `http://localhost:3000`.
+### Seed demo data
 
-### Demo Flow
-
-- Visit the login page
-- Sign in with one of the seeded demo users
-- Open the admin area for management workflows
-- Open the student dashboard for announcements, attendance, fees, and events
-
-### Screenshots / GIFs
-
-- Add dashboard screenshots here
-- Add admin workflow GIFs here
-- Add analytics screenshots here
-
-## Project Structure
-
-```
-smartdesk2/
-├── server/
-│   ├── models/          # 18 MongoDB models (User, Course, Department, etc.)
-│   ├── controllers/     # Business logic controllers
-│   ├── routes/          # Express routes with role-based protection
-│   ├── middleware/      # Auth, security, validation, rate limiting
-│   ├── ai/              # Ollama AI integration
-│   ├── data/            # Database connection and seed data
-│   └── index.js         # Server entry point
-├── client/
-│   ├── pages/           # Next.js pages (admin, student, login)
-│   ├── components/      # Reusable React components
-│   ├── styles/          # Global styles and neon theme
-│   ├── lib/             # API utilities and helpers
-│   └── public/          # Static assets
-├── docs/                # Documentation files
-└── package.json
+```bash
+npm run seed
 ```
 
-## API Endpoints
+Default users after seeding:
 
-### Authentication
-- `POST /login` - User login
-- `GET /logout` - User logout
-- `GET /api/auth/me` - Get current user info
+| Role | Username | Password |
+| --- | --- | --- |
+| Admin | `admin` | `admin123` |
+| Student | `student` | `student123` |
+| Librarian | `librarian` | `lib123` |
+| Hostel Manager | `hostel_manager` | `hostel123` |
+| Finance Manager | `finance_manager` | `finance123` |
+| Academic Manager | `academic_manager` | `academic123` |
+| Faculty | `faculty` | `faculty123` |
 
-### Student Dashboard
-- `GET /api/student/top-topics` - Get trending topics
-- `GET /api/enrollments/student/me` - Get enrolled courses
-- `GET /api/attendance/me` - Get attendance records
-- `GET /api/fees/me` - Get fee information
-- `GET /api/library/books/me` - Get issued books
-- `GET /api/events` - Get upcoming events
-- `GET /api/announcements` - Get announcements
-- `POST /student/feedback` - Submit feedback
+### Test and build
 
-### Admin Management
-- `GET /api/admin/analytics` - Get analytics data
-- `GET /api/admin/stats` - Get dashboard statistics
-- `GET /api/users` - List all users
-- `POST /api/users` - Create user
-- `PUT /api/users/:id` - Update user
-- `DELETE /api/users/:id` - Delete user
+Run backend tests:
 
-### Academic Management
-- `GET /api/departments` - List departments
-- `POST /api/departments` - Create department
-- `GET /api/courses` - List courses
-- `POST /api/courses` - Create course
-- `POST /api/enrollments` - Enroll student
-- `POST /api/attendance` - Mark attendance
+```bash
+npm test
+```
 
-### System Configuration
-- `GET /api/config` - Get all configurations
-- `PUT /api/config` - Update configuration
-- `GET /api/roles` - Get all roles
-- `GET /api/permissions` - Get user permissions
+Build the frontend:
 
-### And 100+ more endpoints for comprehensive university management...
-- `GET /api/users` - List users
-- `GET /api/users/:id` - Get user
-- `POST /api/users` - Create user
-- `PUT /api/users/:id` - Update user
-- `DELETE /api/users/:id` - Delete user
-
-### Topics (Admin Only)
-- `GET /api/topics` - List topics
-- `GET /api/topics/:id` - Get topic
-- `POST /api/topics` - Create topic
-- `PUT /api/topics/:id` - Update topic
-- `DELETE /api/topics/:id` - Delete topic
+```bash
+cd client && npm run build
+```
 
 ## Tech Stack
 
-- **Backend**: Node.js, Express, MongoDB, Mongoose
-- **Frontend**: Next.js, React, Tailwind CSS
-- **AI**: Ollama (local Gemma model)
-- **Auth**: JWT (HTTP-only cookies)
+| Layer | Technologies |
+| --- | --- |
+| Frontend | Next.js, React, Tailwind CSS |
+| Backend | Node.js, Express |
+| Database | MongoDB, Mongoose |
+| Auth & Security | JWT, cookies, Helmet, express-rate-limit |
+| AI | Ollama |
+| Tooling | npm, Nodemon, GitHub Actions |
 
-## Production Deployment
+## Project Structure
 
-1. Set `NODE_ENV=production` in `.env`
-2. Use secure `JWT_SECRET`
-3. Configure `CLIENT_ORIGIN` to your frontend domain
-4. Set up MongoDB connection string
-5. Build frontend: `cd client && npm run build && npm start`
-6. Start backend: `npm start`
+```text
+smartdesk/
+├── api/                  # Vercel serverless entrypoint
+├── client/               # Next.js frontend
+│   ├── components/       # Reusable UI pieces
+│   ├── lib/              # Frontend API utilities
+│   ├── pages/            # Route-based pages
+│   └── styles/           # Global styles and theme
+├── server/               # Express backend
+│   ├── ai/               # AI helpers and Ollama integration
+│   ├── controllers/      # Request handlers
+│   ├── data/             # DB connection and seed logic
+│   ├── middleware/       # Auth, security, validation
+│   ├── models/           # Mongoose models
+│   └── routes/           # API route definitions
+├── tests/                # Backend test coverage
+├── install.sh            # Bash installer
+├── install.ps1           # PowerShell installer
+└── package.json
+```
+
+## Status
+
+SmartDesk is actively functional and deployable. Core authentication, admin workflows, student-facing views, seeded demo data, CI, and Vercel deployment are already in place.
+
+Current focus areas:
+
+- expanding automated test coverage beyond health/config helpers
+- improving frontend lint compatibility with the current Next.js setup
+- adding richer screenshots, walkthroughs, and contributor templates
+
+## Contributing
+
+Contributions are welcome. For local setup, coding standards, testing expectations, and pull request conventions, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+Community expectations are documented in [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
+
+## Security
+
+Please report vulnerabilities privately according to [SECURITY.md](./SECURITY.md).
+
+## Additional Docs
+
+- [Contributing Guide](./CONTRIBUTING.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [Security Policy](./SECURITY.md)
+- [License](./LICENSE)
 
 ## License
 
-MIT
-
-##  Author
-
-**rynixofficial**
-
-- GitHub: [@rynixsnpsu](https://github.com/rynixsnpsu)
-
----
-
-Built with 💚 for universities worldwide
+Licensed under the [MIT License](./LICENSE).
