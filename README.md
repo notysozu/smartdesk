@@ -6,10 +6,9 @@ AI-Powered Student Feedback Intelligence Platform evolved into a comprehensive u
 
 Made with 💚 by [rynixofficial](https://github.com/rynixsnpsu)
 
-## Live Deployments
+## Live Deployment
 
-- Frontend: https://smartdesk-client.vercel.app
-- Backend API: https://smartdesk-nine.vercel.app
+- Frontend: https://client-tau-lemon.vercel.app
 
 ## 🚀 Features
 
