@@ -10,6 +10,18 @@ Made with 💚 by [rynixofficial](https://github.com/rynixsnpsu)
 
 - Frontend: https://client-tau-lemon.vercel.app
 
+## Purpose
+
+SmartDesk is designed to give universities a single platform for academic operations,
+student services, administration, and feedback-driven insights.
+
+## Goals
+
+- Centralize campus operations in one system
+- Provide role-based experiences for students, faculty, and administrators
+- Improve operational visibility with analytics and reporting
+- Support local-first AI-assisted insight generation without locking the project to external SaaS tools
+
 ## 🚀 Features
 
 ### Core Features (200+)
@@ -51,6 +63,13 @@ Made with 💚 by [rynixofficial](https://github.com/rynixsnpsu)
 - ✅ **Frontend**: Next.js with Tailwind CSS, responsive design
 - ✅ **Security**: Rate limiting, CORS, input validation, audit logging
 - ✅ **Sample Data**: Default users and announcements available after seeding
+
+## Additional Docs
+
+- [Contributing Guide](./CONTRIBUTING.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [Security Policy](./SECURITY.md)
+- [License](./LICENSE)
 
 ## Prerequisites
 
@@ -174,6 +193,32 @@ After running `npm run seed`:
 - **Finance Manager**: `finance_manager` / `finance123`
 - **Academic Manager**: `academic_manager` / `academic123`
 - **Faculty**: `faculty` / `faculty123`
+
+## Usage
+
+### Local Development
+
+Run the backend and frontend in separate terminals:
+
+```bash
+npm run dev
+cd client && npm run dev
+```
+
+Then open `http://localhost:3000`.
+
+### Demo Flow
+
+- Visit the login page
+- Sign in with one of the seeded demo users
+- Open the admin area for management workflows
+- Open the student dashboard for announcements, attendance, fees, and events
+
+### Screenshots / GIFs
+
+- Add dashboard screenshots here
+- Add admin workflow GIFs here
+- Add analytics screenshots here
 
 ## Project Structure
 
