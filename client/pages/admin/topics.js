@@ -120,7 +120,7 @@ export default function TopicsDashboard({ initialTopics }) {
         <main className="ml-64 p-8">
           <header className="mb-8 flex justify-between items-center">
             <div>
-              <h1 className="text-4xl font-bold text-gradient-neon mb-2">Feedback Topics</h1>
+              <h1 className="text-4xl font-bold text-primary mb-2">Feedback Topics</h1>
               <p className="text-gray-400">Manage student feedback topics</p>
             </div>
             <button
@@ -201,7 +201,7 @@ export default function TopicsDashboard({ initialTopics }) {
           {showModal && (
             <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-6 backdrop-blur-sm">
               <div className="futuristic-card max-w-md w-full p-8">
-                <h3 className="text-2xl font-bold text-gradient-neon mb-6">
+                <h3 className="text-2xl font-bold text-primary mb-6">
                   {editingTopic ? "Edit Topic" : "Create Topic"}
                 </h3>
                 <form onSubmit={handleSubmit} className="space-y-4">

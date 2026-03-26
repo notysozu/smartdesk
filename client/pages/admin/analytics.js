@@ -83,7 +83,7 @@ export default function AnalyticsDashboard({ analytics, insights, selectedCatego
 
         <main className="ml-64 p-8">
           <header className="mb-8">
-            <h1 className="text-4xl font-bold text-gradient-neon mb-2">Analytics Dashboard</h1>
+            <h1 className="text-4xl font-bold text-primary mb-2">Analytics Dashboard</h1>
             <p className="text-gray-400">Comprehensive insights and statistics</p>
           </header>
 
@@ -106,17 +106,17 @@ export default function AnalyticsDashboard({ analytics, insights, selectedCatego
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="futuristic-card">
               <div className="text-sm text-gray-400 mb-2">Total Submissions</div>
-              <div className="text-4xl font-bold text-gradient-neon">{analytics?.totalSubmissions || 0}</div>
+              <div className="text-4xl font-bold text-primary">{analytics?.totalSubmissions || 0}</div>
             </div>
             <div className="futuristic-card">
               <div className="text-sm text-gray-400 mb-2">Active Categories</div>
-              <div className="text-4xl font-bold text-gradient-neon">
+              <div className="text-4xl font-bold text-primary">
                 {analytics?.categoryDistribution?.length || 0}
               </div>
             </div>
             <div className="futuristic-card">
               <div className="text-sm text-gray-400 mb-2">Last 7 Days</div>
-              <div className="text-4xl font-bold text-gradient-neon">{last7Total}</div>
+              <div className="text-4xl font-bold text-primary">{last7Total}</div>
             </div>
           </div>
 

@@ -14,7 +14,7 @@ export default function TermsOfService() {
         </nav>
 
         <main className="max-w-4xl mx-auto px-6 py-12">
-          <h1 className="text-4xl font-bold text-gradient-neon mb-8">Terms of Service</h1>
+          <h1 className="text-4xl font-bold text-primary mb-8">Terms of Service</h1>
           <div className="futuristic-card p-8 space-y-6 text-gray-300 leading-relaxed">
             <section>
               <h2 className="text-2xl font-bold text-brand mb-4">1. Acceptance of Terms</h2>

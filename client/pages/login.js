@@ -52,7 +52,7 @@ export default function LoginPage() {
       <div className="min-h-screen bg-background bg-grid flex items-center justify-center p-6">
         <div className="neon-card p-8 rounded-lg w-full max-w-md slide-in">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gradient-neon text-primary mb-2">
+            <h1 className="text-4xl font-bold text-primary text-primary mb-2">
               SmartDesk
             </h1>
             <p className="text-gray-400">AI-Powered Feedback Intelligence</p>

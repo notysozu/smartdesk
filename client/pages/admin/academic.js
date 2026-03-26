@@ -134,7 +134,7 @@ export default function AcademicDashboard() {
 
         <main className="ml-64 p-8">
           <header className="mb-8">
-            <h1 className="text-4xl font-bold text-gradient-neon mb-2">Academic Management</h1>
+            <h1 className="text-4xl font-bold text-primary mb-2">Academic Management</h1>
             <p className="text-gray-400">Manage departments, courses, and enrollments</p>
           </header>
 
@@ -269,7 +269,7 @@ export default function AcademicDashboard() {
           {showDeptModal && (
             <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-6 backdrop-blur-sm">
               <div className="futuristic-card max-w-md w-full p-8">
-                <h3 className="text-2xl font-bold text-gradient-neon mb-6">Create Department</h3>
+                <h3 className="text-2xl font-bold text-primary mb-6">Create Department</h3>
                 <form onSubmit={handleCreateDept} className="space-y-4">
                   <div>
                     <label className="block text-sm text-gray-300 mb-2">Name</label>
@@ -318,7 +318,7 @@ export default function AcademicDashboard() {
           {showCourseModal && (
             <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-6 backdrop-blur-sm">
               <div className="futuristic-card max-w-md w-full p-8">
-                <h3 className="text-2xl font-bold text-gradient-neon mb-6">Create Course</h3>
+                <h3 className="text-2xl font-bold text-primary mb-6">Create Course</h3>
                 <form onSubmit={handleCreateCourse} className="space-y-4">
                   <div>
                     <label className="block text-sm text-gray-300 mb-2">Code</label>

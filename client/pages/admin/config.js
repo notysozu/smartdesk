@@ -138,7 +138,7 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
         <main className="ml-64 p-8">
           <header className="mb-8 flex justify-between items-center">
             <div>
-              <h1 className="text-4xl font-bold text-gradient-neon mb-2">System Configuration</h1>
+              <h1 className="text-4xl font-bold text-primary mb-2">System Configuration</h1>
               <p className="text-gray-400">Configure all system settings easily</p>
             </div>
             <button
@@ -192,7 +192,7 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
 
           {/* Configurations */}
           <div className="futuristic-card">
-            <h3 className="text-xl font-bold text-gradient-neon mb-6 flex items-center gap-2">
+            <h3 className="text-xl font-bold text-primary mb-6 flex items-center gap-2">
               <span>{categories.find(c => c.id === selectedCategory)?.icon}</span>
               {categories.find(c => c.id === selectedCategory)?.name} Settings
             </h3>
@@ -225,7 +225,7 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
           {showModal && (
             <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-6 backdrop-blur-sm">
               <div className="futuristic-card max-w-md w-full p-8">
-                <h3 className="text-2xl font-bold text-gradient-neon mb-6">Add Configuration</h3>
+                <h3 className="text-2xl font-bold text-primary mb-6">Add Configuration</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label className="block text-sm text-gray-300 mb-2">Category</label>

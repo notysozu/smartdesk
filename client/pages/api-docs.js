@@ -211,7 +211,7 @@ export default function APIDocumentation() {
     const colors = {
       GET: "bg-success/20 text-success border-success",
       POST: "bg-brand/20 text-brand border-brand",
-      PUT: "bg-neon-yellow/20 text-neon-yellow border-neon-yellow",
+      PUT: "bg-accent/20 text-accent border-accent",
       DELETE: "bg-red-500/20 text-red-400 border-red-500"
     };
     return colors[method] || "bg-gray-500/20 text-gray-400 border-gray-500";
@@ -230,7 +230,7 @@ export default function APIDocumentation() {
 
         <main className="max-w-7xl mx-auto px-6 py-12">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gradient-neon mb-4">API Documentation</h1>
+            <h1 className="text-4xl font-bold text-primary mb-4">API Documentation</h1>
             <p className="text-gray-400">
               Complete API reference for SmartDesk. All endpoints require authentication via HTTP-only cookies 
               unless otherwise specified. Base URL: <code className="text-brand">{API_BASE}</code>
