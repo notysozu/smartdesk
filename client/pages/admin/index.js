@@ -150,11 +150,11 @@ export default function AdminDashboard({ stats, user }) {
 
   const getColorClasses = (color) => {
     const colors = {
-      cyan: "border-neon-cyan text-neon-cyan shadow-[0_0_20px_rgba(0,255,255,0.5)]",
-      pink: "border-neon-pink text-neon-pink shadow-[0_0_20px_rgba(255,0,255,0.5)]",
+      cyan: "border-border text-brand shadow-[0_0_20px_rgba(0,255,255,0.5)]",
+      pink: "border-border-strong text-brand-strong shadow-[0_0_20px_rgba(255,0,255,0.5)]",
       green: "border-neon-green text-neon-green shadow-[0_0_20px_rgba(0,255,0,0.5)]",
       blue: "border-neon-blue text-neon-blue shadow-[0_0_20px_rgba(0,128,255,0.5)]",
-      purple: "border-neon-purple text-neon-purple shadow-[0_0_20px_rgba(128,0,255,0.5)]"
+      purple: "border-neon-purple text-accent shadow-[0_0_20px_rgba(128,0,255,0.5)]"
     };
     return colors[color] || colors.cyan;
   };
@@ -164,16 +164,16 @@ export default function AdminDashboard({ stats, user }) {
       <Head>
         <title>Admin Dashboard - SmartDesk</title>
       </Head>
-      <div className="min-h-screen bg-dark relative">
+      <div className="min-h-screen bg-background relative">
         {/* Sidebar */}
-        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-card border-r border-neon-cyan/30 z-40 p-6">
+        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-surface border-r border-border-strong z-40 p-6">
           <div className="mb-8">
-            <h1 className="text-2xl font-bold neon-glow">SmartDesk</h1>
+            <h1 className="text-2xl font-bold text-primary">SmartDesk</h1>
             <p className="text-xs text-gray-400 mt-1">Admin Control Center</p>
           </div>
 
           <nav className="space-y-2">
-            <Link href="/admin" className="block px-4 py-3 rounded border border-neon-cyan/30 bg-neon-cyan/10 text-neon-cyan hover:bg-neon-cyan/20 transition-all">
+            <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong bg-neon-cyan/10 text-brand hover:bg-neon-cyan/20 transition-all">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
             </Link>
             {featureModules.map((module) => (
@@ -224,7 +224,7 @@ export default function AdminDashboard({ stats, user }) {
                 <FontAwesomeIcon icon={faUsers} className="text-3xl" />
                 <span className="status-online"></span>
               </div>
-              <div className="text-3xl font-bold text-neon-cyan mb-1">{stats.totalStudents || 0}</div>
+              <div className="text-3xl font-bold text-brand mb-1">{stats.totalStudents || 0}</div>
               <div className="text-sm text-gray-400">Total Students</div>
             </div>
             <div className="futuristic-card">
@@ -232,7 +232,7 @@ export default function AdminDashboard({ stats, user }) {
                 <FontAwesomeIcon icon={faBook} className="text-3xl" />
                 <span className="status-online"></span>
               </div>
-              <div className="text-3xl font-bold text-neon-pink mb-1">{stats.totalCourses || 0}</div>
+              <div className="text-3xl font-bold text-brand-strong mb-1">{stats.totalCourses || 0}</div>
               <div className="text-sm text-gray-400">Total Courses</div>
             </div>
             <div className="futuristic-card">
@@ -248,7 +248,7 @@ export default function AdminDashboard({ stats, user }) {
                 <FontAwesomeIcon icon={faHome} className="text-3xl" />
                 <span className="status-online"></span>
               </div>
-              <div className="text-3xl font-bold text-neon-purple mb-1">{stats.hostelOccupancy || 0}</div>
+              <div className="text-3xl font-bold text-accent mb-1">{stats.hostelOccupancy || 0}</div>
               <div className="text-sm text-gray-400">Hostel Occupancy</div>
             </div>
           </div>
@@ -268,7 +268,7 @@ export default function AdminDashboard({ stats, user }) {
                   </div>
                   <h3 className="text-xl font-bold mb-2">{module.title}</h3>
                   <p className="text-sm text-gray-400">{module.description}</p>
-                  <div className="mt-4 text-xs text-neon-cyan opacity-0 group-hover:opacity-100 transition-opacity flex items-center">
+                  <div className="mt-4 text-xs text-brand opacity-0 group-hover:opacity-100 transition-opacity flex items-center">
                     Click to manage <FontAwesomeIcon icon={faArrowRight} className="ml-1" />
                   </div>
                 </Link>
@@ -282,11 +282,11 @@ export default function AdminDashboard({ stats, user }) {
             <div className="grid md:grid-cols-3 gap-6">
               <div>
                 <div className="text-sm text-gray-400 mb-2">Departments</div>
-                <div className="text-2xl font-bold text-neon-cyan">{stats.totalDepartments || 0}</div>
+                <div className="text-2xl font-bold text-brand">{stats.totalDepartments || 0}</div>
               </div>
               <div>
                 <div className="text-sm text-gray-400 mb-2">Books</div>
-                <div className="text-2xl font-bold text-neon-pink">{stats.totalBooks || 0}</div>
+                <div className="text-2xl font-bold text-brand-strong">{stats.totalBooks || 0}</div>
               </div>
               <div>
                 <div className="text-sm text-gray-400 mb-2">Upcoming Events</div>

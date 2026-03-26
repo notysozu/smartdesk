@@ -96,17 +96,17 @@ export default function TopicsDashboard({ initialTopics }) {
       <Head>
         <title>Feedback Topics - SmartDesk Admin</title>
       </Head>
-      <div className="min-h-screen bg-dark relative">
-        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-card border-r border-neon-cyan/30 z-40 p-6">
+      <div className="min-h-screen bg-background relative">
+        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-surface border-r border-border-strong z-40 p-6">
           <div className="mb-8">
-            <Link href="/admin" className="text-2xl font-bold neon-glow block">SmartDesk</Link>
+            <Link href="/admin" className="text-2xl font-bold text-primary block">SmartDesk</Link>
             <p className="text-xs text-gray-400 mt-1">Admin Control Center</p>
           </div>
           <nav className="space-y-2">
-            <Link href="/admin" className="block px-4 py-3 rounded border border-neon-cyan/30 text-gray-400 hover:text-neon-cyan transition-all">
+            <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <span className="mr-2">🏠</span> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-purple/30 bg-neon-purple/10 text-neon-purple">
+            <div className="block px-4 py-3 rounded border border-neon-purple/30 bg-neon-purple/10 text-accent">
               <span className="mr-2">💬</span> Topics
             </div>
           </nav>
@@ -138,7 +138,7 @@ export default function TopicsDashboard({ initialTopics }) {
           <div className="futuristic-card overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-neon-cyan/30">
+                <tr className="border-b border-border-strong">
                   <th className="text-left py-3 px-4 text-gray-400">Topic</th>
                   <th className="text-left py-3 px-4 text-gray-400">Description</th>
                   <th className="text-left py-3 px-4 text-gray-400">Category</th>
@@ -149,15 +149,15 @@ export default function TopicsDashboard({ initialTopics }) {
               </thead>
               <tbody>
                 {topics.map((topic) => (
-                  <tr key={topic._id} className="border-b border-neon-cyan/10 hover:bg-neon-cyan/5">
+                  <tr key={topic._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
                     <td className="py-3 px-4 text-white font-semibold">{topic.topic}</td>
                     <td className="py-3 px-4 text-gray-400 max-w-md truncate">{topic.description}</td>
                     <td className="py-3 px-4">
-                      <span className="px-3 py-1 rounded text-xs bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/50">
+                      <span className="px-3 py-1 rounded text-xs bg-neon-cyan/20 text-brand border border-border/50">
                         {topic.category}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-neon-pink font-bold">{topic.votes || 0}</td>
+                    <td className="py-3 px-4 text-brand-strong font-bold">{topic.votes || 0}</td>
                     <td className="py-3 px-4">
                       <span className={`px-3 py-1 rounded text-xs ${
                         topic.status === "open"

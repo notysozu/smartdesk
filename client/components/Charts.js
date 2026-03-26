@@ -24,8 +24,8 @@ export function BarChart({ labels, values, height = 180 }) {
                 style={{
                   height: h,
                   borderRadius: 10,
-                  background: "linear-gradient(135deg, #00ffff, #ff00ff)",
-                  boxShadow: "0 0 10px rgba(0, 255, 255, 0.5)"
+                  background: "linear-gradient(135deg, #3b82f6, #6366f1)",
+                  boxShadow: "0 0 10px rgba(59, 130, 246, 0.5)"
                 }}
               />
               <div
@@ -80,13 +80,13 @@ export function LineChart({ labels, values, height = 180 }) {
     >
       <defs>
         <linearGradient id="trend" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#00ffff" />
-          <stop offset="100%" stopColor="#ff00ff" />
+          <stop offset="0%" stopColor="#3b82f6" />
+          <stop offset="100%" stopColor="#6366f1" />
         </linearGradient>
       </defs>
-      <path d={d} fill="none" stroke="url(#trend)" strokeWidth="3" style={{ filter: "drop-shadow(0 0 4px rgba(0, 255, 255, 0.6))" }} />
+      <path d={d} fill="none" stroke="url(#trend)" strokeWidth="3" style={{ filter: "drop-shadow(0 0 4px rgba(59, 130, 246, 0.6))" }} />
       {points.map((p, i) => (
-        <circle key={i} cx={p.x} cy={p.y} r="4" fill="#ff00ff" style={{ filter: "drop-shadow(0 0 4px rgba(255, 0, 255, 0.8))" }}>
+        <circle key={i} cx={p.x} cy={p.y} r="4" fill="#6366f1" style={{ filter: "drop-shadow(0 0 4px rgba(99, 102, 241, 0.8))" }}>
           <title>
             {labels[i]}: {p.v}
           </title>

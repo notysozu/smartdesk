@@ -13,7 +13,7 @@ export default function LandingPage() {
         <title>SmartDesk - AI-Powered University Management System</title>
         <meta name="description" content="Transform your university operations with SmartDesk - Comprehensive management system with 200+ features" />
       </Head>
-      <div className="min-h-screen bg-dark relative overflow-hidden">
+      <div className="min-h-screen bg-background relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-20 w-72 h-72 bg-neon-cyan opacity-10 rounded-full blur-3xl animate-pulse"></div>
@@ -23,11 +23,11 @@ export default function LandingPage() {
 
         {/* Navbar */}
         <nav className="relative z-10 p-6 flex justify-between items-center">
-          <div className="text-2xl font-bold neon-glow">SmartDesk</div>
+          <div className="text-2xl font-bold text-primary">SmartDesk</div>
           <div className="flex gap-4 items-center">
-            <Link href="#about" className="text-gray-300 hover:text-neon-cyan transition-colors">About</Link>
-            <Link href="#contact" className="text-gray-300 hover:text-neon-cyan transition-colors">Contact</Link>
-            <Link href="/api-docs" className="text-gray-300 hover:text-neon-cyan transition-colors">API Docs</Link>
+            <Link href="#about" className="text-gray-300 hover:text-brand transition-colors">About</Link>
+            <Link href="#contact" className="text-gray-300 hover:text-brand transition-colors">Contact</Link>
+            <Link href="/api-docs" className="text-gray-300 hover:text-brand transition-colors">API Docs</Link>
             <button
               onClick={() => router.push("/login")}
               className="btn-neon btn-neon-primary"
@@ -39,7 +39,7 @@ export default function LandingPage() {
 
         {/* Hero Section */}
         <section className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center">
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 text-gradient-neon neon-glow">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 text-gradient-neon text-primary">
             SmartDesk
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto">
@@ -84,7 +84,7 @@ export default function LandingPage() {
             ].map((feature, idx) => (
               <div key={idx} className="futuristic-card hover-lift slide-in" style={{ animationDelay: `${idx * 0.1}s` }}>
                 <div className="text-4xl mb-4"><FontAwesomeIcon icon={feature.icon} /></div>
-                <h3 className="text-xl font-bold mb-2 text-neon-cyan">{feature.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-brand">{feature.title}</h3>
                 <p className="text-gray-400">{feature.desc}</p>
               </div>
             ))}
@@ -113,7 +113,7 @@ export default function LandingPage() {
           <h2 className="text-4xl font-bold text-center mb-12 text-gradient-neon">About SmartDesk</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="futuristic-card p-8">
-              <h3 className="text-2xl font-bold text-neon-cyan mb-4">Our Mission</h3>
+              <h3 className="text-2xl font-bold text-brand mb-4">Our Mission</h3>
               <p className="text-gray-300 leading-relaxed mb-4">
                 SmartDesk is designed to revolutionize university management by providing a comprehensive, 
                 AI-powered platform that streamlines operations across all departments. We believe in making 
@@ -125,7 +125,7 @@ export default function LandingPage() {
               </p>
             </div>
             <div className="futuristic-card p-8">
-              <h3 className="text-2xl font-bold text-neon-pink mb-4">Key Benefits</h3>
+              <h3 className="text-2xl font-bold text-brand-strong mb-4">Key Benefits</h3>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-start">
                   <FontAwesomeIcon icon={faCheck} className="text-neon-green mr-2 mt-1" />
@@ -161,17 +161,17 @@ export default function LandingPage() {
           <h2 className="text-4xl font-bold text-center mb-12 text-gradient-neon">Get In Touch</h2>
           <div className="grid md:grid-cols-2 gap-12">
             <div className="futuristic-card p-8">
-              <h3 className="text-2xl font-bold text-neon-cyan mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-brand mb-6">Contact Information</h3>
               <div className="space-y-4">
                 <div>
                   <div className="text-sm text-gray-400 mb-1">Email</div>
-                  <a href="mailto:support@smartdesk.com" className="text-neon-cyan hover:text-neon-pink transition-colors">
+                  <a href="mailto:support@smartdesk.com" className="text-brand hover:text-brand-strong transition-colors">
                     support@smartdesk.com
                   </a>
                 </div>
                 <div>
                   <div className="text-sm text-gray-400 mb-1">GitHub</div>
-                  <a href="https://github.com/rynixofficial" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:text-neon-pink transition-colors">
+                  <a href="https://github.com/rynixofficial" target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand-strong transition-colors">
                     github.com/rynixofficial
                   </a>
                 </div>
@@ -182,7 +182,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="futuristic-card p-8">
-              <h3 className="text-2xl font-bold text-neon-pink mb-6">Send a Message</h3>
+              <h3 className="text-2xl font-bold text-brand-strong mb-6">Send a Message</h3>
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm text-gray-300 mb-2">Name</label>
@@ -205,51 +205,51 @@ export default function LandingPage() {
         </section>
 
         {/* Footer */}
-        <footer className="relative z-10 border-t border-neon-cyan/30 mt-20 py-8">
+        <footer className="relative z-10 border-t border-border-strong mt-20 py-8">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-4 gap-8 mb-8">
               <div>
-                <h4 className="text-lg font-bold text-neon-cyan mb-4">SmartDesk</h4>
+                <h4 className="text-lg font-bold text-brand mb-4">SmartDesk</h4>
                 <p className="text-gray-400 text-sm">
                   Next-generation university management system with 200+ features.
                 </p>
               </div>
               <div>
-                <h4 className="text-lg font-bold text-neon-cyan mb-4">Quick Links</h4>
+                <h4 className="text-lg font-bold text-brand mb-4">Quick Links</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><Link href="/" className="hover:text-neon-cyan transition-colors">Home</Link></li>
-                  <li><Link href="#about" className="hover:text-neon-cyan transition-colors">About</Link></li>
-                  <li><Link href="#contact" className="hover:text-neon-cyan transition-colors">Contact</Link></li>
-                  <li><Link href="/api-docs" className="hover:text-neon-cyan transition-colors">API Docs</Link></li>
+                  <li><Link href="/" className="hover:text-brand transition-colors">Home</Link></li>
+                  <li><Link href="#about" className="hover:text-brand transition-colors">About</Link></li>
+                  <li><Link href="#contact" className="hover:text-brand transition-colors">Contact</Link></li>
+                  <li><Link href="/api-docs" className="hover:text-brand transition-colors">API Docs</Link></li>
                 </ul>
               </div>
               <div>
-                <h4 className="text-lg font-bold text-neon-cyan mb-4">Legal</h4>
+                <h4 className="text-lg font-bold text-brand mb-4">Legal</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><Link href="/privacy" className="hover:text-neon-cyan transition-colors">Privacy Policy</Link></li>
-                  <li><Link href="/terms" className="hover:text-neon-cyan transition-colors">Terms of Service</Link></li>
+                  <li><Link href="/privacy" className="hover:text-brand transition-colors">Privacy Policy</Link></li>
+                  <li><Link href="/terms" className="hover:text-brand transition-colors">Terms of Service</Link></li>
                 </ul>
               </div>
               <div>
-                <h4 className="text-lg font-bold text-neon-cyan mb-4">Connect</h4>
+                <h4 className="text-lg font-bold text-brand mb-4">Connect</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
                   <li>
-                    <a href="https://github.com/rynixofficial" target="_blank" rel="noopener noreferrer" className="hover:text-neon-cyan transition-colors">
+                    <a href="https://github.com/rynixofficial" target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">
                       GitHub
                     </a>
                   </li>
                   <li>
-                    <a href="mailto:support@smartdesk.com" className="hover:text-neon-cyan transition-colors">
+                    <a href="mailto:support@smartdesk.com" className="hover:text-brand transition-colors">
                       Email Support
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div className="text-center text-gray-400 text-sm border-t border-neon-cyan/30 pt-8">
+            <div className="text-center text-gray-400 text-sm border-t border-border-strong pt-8">
               <p>
                 © 2025 SmartDesk. Built with <FontAwesomeIcon icon={faHeart} className="text-red-500 mx-1" /> by{" "}
-                <a href="https://github.com/rynixofficial" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:text-neon-pink">
+                <a href="https://github.com/rynixofficial" target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand-strong">
                   rynixofficial
                 </a>
               </p>

@@ -100,17 +100,17 @@ export default function EventsDashboard() {
       <Head>
         <title>Events Management - SmartDesk Admin</title>
       </Head>
-      <div className="min-h-screen bg-dark relative">
-        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-card border-r border-neon-cyan/30 z-40 p-6">
+      <div className="min-h-screen bg-background relative">
+        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-surface border-r border-border-strong z-40 p-6">
           <div className="mb-8">
-            <Link href="/admin" className="text-2xl font-bold neon-glow block">SmartDesk</Link>
+            <Link href="/admin" className="text-2xl font-bold text-primary block">SmartDesk</Link>
             <p className="text-xs text-gray-400 mt-1">Admin Control Center</p>
           </div>
           <nav className="space-y-2">
-            <Link href="/admin" className="block px-4 py-3 rounded border border-neon-cyan/30 text-gray-400 hover:text-neon-cyan transition-all">
+            <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-pink/30 bg-neon-pink/10 text-neon-pink">
+            <div className="block px-4 py-3 rounded border border-border-strong/30 bg-neon-pink/10 text-brand-strong">
               <FontAwesomeIcon icon={faCalendarAlt} className="mr-2" /> Events
             </div>
           </nav>
@@ -141,7 +141,7 @@ export default function EventsDashboard() {
           <div className="futuristic-card overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-neon-cyan/30">
+                <tr className="border-b border-border-strong">
                   <th className="text-left py-3 px-4 text-gray-400">Name</th>
                   <th className="text-left py-3 px-4 text-gray-400">Category</th>
                   <th className="text-left py-3 px-4 text-gray-400">Start Date</th>
@@ -152,10 +152,10 @@ export default function EventsDashboard() {
               </thead>
               <tbody>
                 {events.map((event) => (
-                  <tr key={event._id} className="border-b border-neon-cyan/10 hover:bg-neon-cyan/5">
+                  <tr key={event._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
                     <td className="py-3 px-4 text-white font-semibold">{event.name}</td>
                     <td className="py-3 px-4 text-gray-400 capitalize">{event.category}</td>
-                    <td className="py-3 px-4 text-neon-cyan">{new Date(event.startDate).toLocaleDateString()}</td>
+                    <td className="py-3 px-4 text-brand">{new Date(event.startDate).toLocaleDateString()}</td>
                     <td className="py-3 px-4 text-gray-400">{event.location}</td>
                     <td className="py-3 px-4">
                       <span className={`px-3 py-1 rounded text-xs ${

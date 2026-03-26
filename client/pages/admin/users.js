@@ -128,18 +128,18 @@ export default function UserManagement({ initialUsers, roles }) {
       <Head>
         <title>User Management - SmartDesk Admin</title>
       </Head>
-      <div className="min-h-screen bg-dark relative">
+      <div className="min-h-screen bg-background relative">
         {/* Sidebar */}
-        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-card border-r border-neon-cyan/30 z-40 p-6">
+        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-surface border-r border-border-strong z-40 p-6">
           <div className="mb-8">
-            <Link href="/admin" className="text-2xl font-bold neon-glow block">SmartDesk</Link>
+            <Link href="/admin" className="text-2xl font-bold text-primary block">SmartDesk</Link>
             <p className="text-xs text-gray-400 mt-1">Admin Control Center</p>
           </div>
           <nav className="space-y-2">
-            <Link href="/admin" className="block px-4 py-3 rounded border border-neon-cyan/30 text-gray-400 hover:text-neon-cyan transition-all">
+            <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <span className="mr-2">🏠</span> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-pink/30 bg-neon-pink/10 text-neon-pink">
+            <div className="block px-4 py-3 rounded border border-border-strong/30 bg-neon-pink/10 text-brand-strong">
               <span className="mr-2">👥</span> Users
             </div>
           </nav>
@@ -201,7 +201,7 @@ export default function UserManagement({ initialUsers, roles }) {
           <div className="futuristic-card overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-neon-cyan/30">
+                <tr className="border-b border-border-strong">
                   <th className="text-left py-3 px-4 text-gray-400">Username</th>
                   <th className="text-left py-3 px-4 text-gray-400">Email</th>
                   <th className="text-left py-3 px-4 text-gray-400">Role</th>
@@ -211,13 +211,13 @@ export default function UserManagement({ initialUsers, roles }) {
               </thead>
               <tbody>
                 {filteredUsers.map((user) => (
-                  <tr key={user._id} className="border-b border-neon-cyan/10 hover:bg-neon-cyan/5 transition-colors">
+                  <tr key={user._id} className="border-b border-border/10 hover:bg-neon-cyan/5 transition-colors">
                     <td className="py-3 px-4 text-white">{user.username}</td>
                     <td className="py-3 px-4 text-gray-400">{user.email}</td>
                     <td className="py-3 px-4">
                       <span className={`px-3 py-1 rounded text-xs border ${
-                        user.role === "admin" ? "border-neon-pink text-neon-pink" :
-                        user.role === "student" ? "border-neon-cyan text-neon-cyan" :
+                        user.role === "admin" ? "border-border-strong text-brand-strong" :
+                        user.role === "student" ? "border-border text-brand" :
                         "border-neon-green text-neon-green"
                       }`}>
                         {roles[user.role]?.name || user.role}

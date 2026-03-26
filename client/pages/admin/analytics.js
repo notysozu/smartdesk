@@ -60,14 +60,14 @@ export default function AnalyticsDashboard({ analytics, insights, selectedCatego
       <Head>
         <title>Analytics - SmartDesk Admin</title>
       </Head>
-      <div className="min-h-screen bg-dark relative">
-        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-card border-r border-neon-cyan/30 z-40 p-6">
+      <div className="min-h-screen bg-background relative">
+        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-surface border-r border-border-strong z-40 p-6">
           <div className="mb-8">
-            <Link href="/admin" className="text-2xl font-bold neon-glow block">SmartDesk</Link>
+            <Link href="/admin" className="text-2xl font-bold text-primary block">SmartDesk</Link>
             <p className="text-xs text-gray-400 mt-1">Admin Control Center</p>
           </div>
           <nav className="space-y-2">
-            <Link href="/admin" className="block px-4 py-3 rounded border border-neon-cyan/30 text-gray-400 hover:text-neon-cyan transition-all">
+            <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <span className="mr-2"><FontAwesomeIcon icon={faHome} /></span> Dashboard
             </Link>
             <div className="block px-4 py-3 rounded border border-neon-green/30 bg-neon-green/10 text-neon-green">
@@ -122,7 +122,7 @@ export default function AnalyticsDashboard({ analytics, insights, selectedCatego
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="futuristic-card">
-              <h3 className="text-xl font-bold text-neon-cyan mb-4">Category Distribution</h3>
+              <h3 className="text-xl font-bold text-brand mb-4">Category Distribution</h3>
               {categoryChartData.labels.length > 0 ? (
                 <BarChart labels={categoryChartData.labels} values={categoryChartData.counts} />
               ) : (
@@ -130,7 +130,7 @@ export default function AnalyticsDashboard({ analytics, insights, selectedCatego
               )}
             </div>
             <div className="futuristic-card">
-              <h3 className="text-xl font-bold text-neon-pink mb-4">Weekly Trend</h3>
+              <h3 className="text-xl font-bold text-brand-strong mb-4">Weekly Trend</h3>
               {weeklyChartData.labels.length > 0 ? (
                 <LineChart labels={weeklyChartData.labels} values={weeklyChartData.counts} />
               ) : (

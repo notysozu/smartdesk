@@ -198,11 +198,11 @@ export default function APIDocumentation() {
 
   const getColorClasses = (color) => {
     const colors = {
-      cyan: "border-neon-cyan text-neon-cyan",
-      pink: "border-neon-pink text-neon-pink",
+      cyan: "border-border text-brand",
+      pink: "border-border-strong text-brand-strong",
       green: "border-neon-green text-neon-green",
       blue: "border-neon-blue text-neon-blue",
-      purple: "border-neon-purple text-neon-purple"
+      purple: "border-neon-purple text-accent"
     };
     return colors[color] || colors.cyan;
   };
@@ -222,9 +222,9 @@ export default function APIDocumentation() {
       <Head>
         <title>API Documentation - SmartDesk</title>
       </Head>
-      <div className="min-h-screen bg-dark relative">
-        <nav className="relative z-10 p-6 flex justify-between items-center border-b border-neon-cyan/30">
-          <Link href="/" className="text-2xl font-bold neon-glow">SmartDesk</Link>
+      <div className="min-h-screen bg-background relative">
+        <nav className="relative z-10 p-6 flex justify-between items-center border-b border-border-strong">
+          <Link href="/" className="text-2xl font-bold text-primary">SmartDesk</Link>
           <Link href="/" className="btn-neon text-sm px-4 py-2">Back to Home</Link>
         </nav>
 
@@ -233,16 +233,16 @@ export default function APIDocumentation() {
             <h1 className="text-4xl font-bold text-gradient-neon mb-4">API Documentation</h1>
             <p className="text-gray-400">
               Complete API reference for SmartDesk. All endpoints require authentication via HTTP-only cookies 
-              unless otherwise specified. Base URL: <code className="text-neon-cyan">{API_BASE}</code>
+              unless otherwise specified. Base URL: <code className="text-brand">{API_BASE}</code>
             </p>
           </div>
 
           <div className="futuristic-card p-6 mb-8">
-            <h2 className="text-2xl font-bold text-neon-cyan mb-4">Authentication</h2>
+            <h2 className="text-2xl font-bold text-brand mb-4">Authentication</h2>
             <p className="text-gray-300 mb-4">
               Most endpoints require authentication. Include credentials in your requests:
             </p>
-            <div className="bg-bg-darker p-4 rounded border border-neon-cyan/20">
+            <div className="bg-bg-background-soft p-4 rounded border border-border/20">
               <pre className="text-neon-green text-sm whitespace-pre-wrap">{sampleGetRequest}</pre>
             </div>
           </div>
@@ -256,7 +256,7 @@ export default function APIDocumentation() {
                 {category.routes.map((route, routeIdx) => (
                   <div
                     key={routeIdx}
-                    className="futuristic-card p-6 cursor-pointer hover:border-neon-cyan/50 transition-all"
+                    className="futuristic-card p-6 cursor-pointer hover:border-border/50 transition-all"
                     onClick={() => setSelectedEndpoint(selectedEndpoint === `${catIdx}-${routeIdx}` ? null : `${catIdx}-${routeIdx}`)}
                   >
                     <div className="flex items-start justify-between mb-2">
@@ -264,9 +264,9 @@ export default function APIDocumentation() {
                         <span className={`px-3 py-1 rounded text-xs font-bold border ${getMethodColor(route.method)}`}>
                           {route.method}
                         </span>
-                        <code className="text-neon-cyan font-mono">{route.path}</code>
+                        <code className="text-brand font-mono">{route.path}</code>
                         {route.auth && (
-                          <span className="px-2 py-1 bg-neon-pink/20 text-neon-pink text-xs rounded border border-neon-pink/50">
+                          <span className="px-2 py-1 bg-neon-pink/20 text-brand-strong text-xs rounded border border-border-strong/50">
                             Auth Required
                           </span>
                         )}
@@ -275,19 +275,19 @@ export default function APIDocumentation() {
                     <p className="text-gray-300 mb-4">{route.description}</p>
 
                     {selectedEndpoint === `${catIdx}-${routeIdx}` && (
-                      <div className="mt-4 pt-4 border-t border-neon-cyan/20 space-y-4">
+                      <div className="mt-4 pt-4 border-t border-border/20 space-y-4">
                         {route.query && (
                           <div>
-                            <h4 className="text-sm font-semibold text-neon-pink mb-2">Query Parameters</h4>
-                            <div className="bg-bg-darker p-3 rounded text-sm">
+                            <h4 className="text-sm font-semibold text-brand-strong mb-2">Query Parameters</h4>
+                            <div className="bg-bg-background-soft p-3 rounded text-sm">
                               <pre className="text-gray-300">{JSON.stringify(route.query, null, 2)}</pre>
                             </div>
                           </div>
                         )}
                         {route.body && (
                           <div>
-                            <h4 className="text-sm font-semibold text-neon-pink mb-2">Request Body</h4>
-                            <div className="bg-bg-darker p-3 rounded text-sm">
+                            <h4 className="text-sm font-semibold text-brand-strong mb-2">Request Body</h4>
+                            <div className="bg-bg-background-soft p-3 rounded text-sm">
                               <pre className="text-gray-300">{JSON.stringify(route.body, null, 2)}</pre>
                             </div>
                           </div>
@@ -295,13 +295,13 @@ export default function APIDocumentation() {
                         {route.response && (
                           <div>
                             <h4 className="text-sm font-semibold text-neon-green mb-2">Response</h4>
-                            <div className="bg-bg-darker p-3 rounded text-sm">
+                            <div className="bg-bg-background-soft p-3 rounded text-sm">
                               <pre className="text-gray-300">{JSON.stringify(route.response, null, 2)}</pre>
                             </div>
                           </div>
                         )}
-                        <div className="bg-bg-darker p-3 rounded text-sm">
-                          <h4 className="text-sm font-semibold text-neon-cyan mb-2">Example Request</h4>
+                        <div className="bg-bg-background-soft p-3 rounded text-sm">
+                          <h4 className="text-sm font-semibold text-brand mb-2">Example Request</h4>
                           <pre className="text-neon-green text-xs whitespace-pre-wrap">
                             {route.method === "GET"
                               ? `fetch('${API_BASE}${route.path}', {
@@ -324,9 +324,9 @@ export default function APIDocumentation() {
           ))}
 
           <div className="futuristic-card p-6 mt-8">
-            <h2 className="text-2xl font-bold text-neon-cyan mb-4">Error Responses</h2>
+            <h2 className="text-2xl font-bold text-brand mb-4">Error Responses</h2>
             <p className="text-gray-300 mb-4">All errors follow this format:</p>
-            <div className="bg-bg-darker p-4 rounded border border-red-500/20">
+            <div className="bg-bg-background-soft p-4 rounded border border-red-500/20">
               <pre className="text-red-400 text-sm">
                 {'{'}
                 <br />

@@ -87,17 +87,17 @@ export default function HostelDashboard() {
       <Head>
         <title>Hostel Management - SmartDesk Admin</title>
       </Head>
-      <div className="min-h-screen bg-dark relative">
-        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-card border-r border-neon-cyan/30 z-40 p-6">
+      <div className="min-h-screen bg-background relative">
+        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-surface border-r border-border-strong z-40 p-6">
           <div className="mb-8">
-            <Link href="/admin" className="text-2xl font-bold neon-glow block">SmartDesk</Link>
+            <Link href="/admin" className="text-2xl font-bold text-primary block">SmartDesk</Link>
             <p className="text-xs text-gray-400 mt-1">Admin Control Center</p>
           </div>
           <nav className="space-y-2">
-            <Link href="/admin" className="block px-4 py-3 rounded border border-neon-cyan/30 text-gray-400 hover:text-neon-cyan transition-all">
+            <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-purple/30 bg-neon-purple/10 text-neon-purple">
+            <div className="block px-4 py-3 rounded border border-neon-purple/30 bg-neon-purple/10 text-accent">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Hostel
             </div>
           </nav>
@@ -114,15 +114,15 @@ export default function HostelDashboard() {
             <p className="text-gray-400">Manage rooms and allocations</p>
           </header>
 
-          <div className="flex gap-4 mb-6 border-b border-neon-cyan/30">
+          <div className="flex gap-4 mb-6 border-b border-border-strong">
             {["rooms", "allocations"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`px-6 py-3 font-semibold capitalize transition-all ${
                   activeTab === tab
-                    ? "text-neon-purple border-b-2 border-neon-purple"
-                    : "text-gray-400 hover:text-neon-cyan"
+                    ? "text-accent border-b-2 border-neon-purple"
+                    : "text-gray-400 hover:text-brand"
                 }`}
               >
                 {tab}
@@ -143,7 +143,7 @@ export default function HostelDashboard() {
               <div className="futuristic-card overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-neon-cyan/30">
+                    <tr className="border-b border-border-strong">
                       <th className="text-left py-3 px-4 text-gray-400">Room Number</th>
                       <th className="text-left py-3 px-4 text-gray-400">Building</th>
                       <th className="text-left py-3 px-4 text-gray-400">Type</th>
@@ -153,11 +153,11 @@ export default function HostelDashboard() {
                   </thead>
                   <tbody>
                     {rooms.map((room) => (
-                      <tr key={room._id} className="border-b border-neon-cyan/10 hover:bg-neon-cyan/5">
-                        <td className="py-3 px-4 text-neon-purple font-bold">{room.roomNumber}</td>
+                      <tr key={room._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
+                        <td className="py-3 px-4 text-accent font-bold">{room.roomNumber}</td>
                         <td className="py-3 px-4 text-white">{room.building}</td>
                         <td className="py-3 px-4 text-gray-400 capitalize">{room.type}</td>
-                        <td className="py-3 px-4 text-neon-cyan">{room.capacity}</td>
+                        <td className="py-3 px-4 text-brand">{room.capacity}</td>
                         <td className="py-3 px-4">
                           <span className={`px-3 py-1 rounded text-xs ${
                             room.status === "available"
@@ -179,7 +179,7 @@ export default function HostelDashboard() {
             <div className="futuristic-card overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-neon-cyan/30">
+                  <tr className="border-b border-border-strong">
                     <th className="text-left py-3 px-4 text-gray-400">Student</th>
                     <th className="text-left py-3 px-4 text-gray-400">Room</th>
                     <th className="text-left py-3 px-4 text-gray-400">Start Date</th>
@@ -188,9 +188,9 @@ export default function HostelDashboard() {
                 </thead>
                 <tbody>
                   {allocations.map((alloc) => (
-                    <tr key={alloc._id} className="border-b border-neon-cyan/10 hover:bg-neon-cyan/5">
+                    <tr key={alloc._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
                       <td className="py-3 px-4 text-white">{alloc.student?.username || "—"}</td>
-                      <td className="py-3 px-4 text-neon-purple">{alloc.room?.roomNumber || "—"}</td>
+                      <td className="py-3 px-4 text-accent">{alloc.room?.roomNumber || "—"}</td>
                       <td className="py-3 px-4 text-gray-400">{new Date(alloc.startDate).toLocaleDateString()}</td>
                       <td className="py-3 px-4">
                         <span className="px-3 py-1 rounded text-xs bg-neon-blue/20 text-neon-blue">

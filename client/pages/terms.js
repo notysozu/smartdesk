@@ -7,9 +7,9 @@ export default function TermsOfService() {
       <Head>
         <title>Terms of Service - SmartDesk</title>
       </Head>
-      <div className="min-h-screen bg-dark relative">
-        <nav className="relative z-10 p-6 flex justify-between items-center border-b border-neon-cyan/30">
-          <Link href="/" className="text-2xl font-bold neon-glow">SmartDesk</Link>
+      <div className="min-h-screen bg-background relative">
+        <nav className="relative z-10 p-6 flex justify-between items-center border-b border-border-strong">
+          <Link href="/" className="text-2xl font-bold text-primary">SmartDesk</Link>
           <Link href="/" className="btn-neon text-sm px-4 py-2">Back to Home</Link>
         </nav>
 
@@ -17,7 +17,7 @@ export default function TermsOfService() {
           <h1 className="text-4xl font-bold text-gradient-neon mb-8">Terms of Service</h1>
           <div className="futuristic-card p-8 space-y-6 text-gray-300 leading-relaxed">
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">1. Acceptance of Terms</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">1. Acceptance of Terms</h2>
               <p>
                 By accessing and using SmartDesk ("the Service"), you accept and agree to be bound by the terms 
                 and provision of this agreement. If you do not agree to these terms, please do not use the Service.
@@ -25,7 +25,7 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">2. Description of Service</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">2. Description of Service</h2>
               <p>
                 SmartDesk is a comprehensive university management system that provides tools for academic, 
                 financial, administrative, and operational management. The Service includes but is not limited to:
@@ -43,8 +43,8 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">3. User Accounts</h2>
-              <h3 className="text-xl font-semibold text-neon-pink mb-2">3.1 Account Creation</h3>
+              <h2 className="text-2xl font-bold text-brand mb-4">3. User Accounts</h2>
+              <h3 className="text-xl font-semibold text-brand-strong mb-2">3.1 Account Creation</h3>
               <p className="mb-4">
                 To use certain features of the Service, you must create an account. You agree to:
               </p>
@@ -55,7 +55,7 @@ export default function TermsOfService() {
                 <li>Accept responsibility for all activities under your account</li>
               </ul>
 
-              <h3 className="text-xl font-semibold text-neon-pink mb-2 mt-6">3.2 Account Security</h3>
+              <h3 className="text-xl font-semibold text-brand-strong mb-2 mt-6">3.2 Account Security</h3>
               <p>
                 You are responsible for maintaining the confidentiality of your account credentials. You agree 
                 to notify us immediately of any unauthorized access or use of your account.
@@ -63,7 +63,7 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">4. Acceptable Use</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">4. Acceptable Use</h2>
               <p>You agree not to:</p>
               <ul className="list-disc list-inside space-y-2 ml-4 mt-2">
                 <li>Use the Service for any illegal or unauthorized purpose</li>
@@ -79,7 +79,7 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">5. Intellectual Property</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">5. Intellectual Property</h2>
               <p>
                 The Service, including its original content, features, and functionality, is owned by SmartDesk 
                 and protected by international copyright, trademark, and other intellectual property laws. You may 
@@ -88,7 +88,7 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">6. User Content</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">6. User Content</h2>
               <p>
                 You retain ownership of any content you submit to the Service. By submitting content, you grant 
                 us a worldwide, non-exclusive, royalty-free license to use, reproduce, and distribute your content 
@@ -97,7 +97,7 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">7. Service Availability</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">7. Service Availability</h2>
               <p>
                 We strive to maintain high availability of the Service but do not guarantee uninterrupted access. 
                 The Service may be temporarily unavailable due to maintenance, updates, or unforeseen circumstances. 
@@ -106,7 +106,7 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">8. Limitation of Liability</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">8. Limitation of Liability</h2>
               <p>
                 To the maximum extent permitted by law, SmartDesk shall not be liable for any indirect, incidental, 
                 special, consequential, or punitive damages, including loss of profits, data, or use, arising out 
@@ -115,7 +115,7 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">9. Indemnification</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">9. Indemnification</h2>
               <p>
                 You agree to indemnify and hold harmless SmartDesk, its officers, directors, employees, and agents 
                 from any claims, damages, losses, liabilities, and expenses (including legal fees) arising out of 
@@ -124,7 +124,7 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">10. Termination</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">10. Termination</h2>
               <p>
                 We reserve the right to terminate or suspend your account and access to the Service immediately, 
                 without prior notice, for any reason, including breach of these Terms. Upon termination, your right 
@@ -133,7 +133,7 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">11. Changes to Terms</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">11. Changes to Terms</h2>
               <p>
                 We reserve the right to modify these Terms at any time. We will notify users of significant changes 
                 by posting the updated Terms on this page. Your continued use of the Service after changes constitutes 
@@ -142,7 +142,7 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">12. Governing Law</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">12. Governing Law</h2>
               <p>
                 These Terms shall be governed by and construed in accordance with applicable laws, without regard to 
                 conflict of law provisions. Any disputes arising from these Terms shall be subject to the exclusive 
@@ -151,19 +151,19 @@ export default function TermsOfService() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">13. Contact Information</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">13. Contact Information</h2>
               <p>
                 If you have questions about these Terms, please contact us at:
               </p>
               <p className="mt-2">
                 <strong>Email:</strong>{" "}
-                <a href="mailto:support@smartdesk.com" className="text-neon-cyan hover:text-neon-pink">
+                <a href="mailto:support@smartdesk.com" className="text-brand hover:text-brand-strong">
                   support@smartdesk.com
                 </a>
               </p>
             </section>
 
-            <div className="mt-8 pt-6 border-t border-neon-cyan/30 text-sm text-gray-400">
+            <div className="mt-8 pt-6 border-t border-border-strong text-sm text-gray-400">
               <p>Last Updated: January 2025</p>
             </div>
           </div>

@@ -146,10 +146,10 @@ export default function StudentDashboard({ initialData }) {
       <Head>
         <title>Student Dashboard - SmartDesk</title>
       </Head>
-      <div className="min-h-screen bg-dark bg-grid">
+      <div className="min-h-screen bg-background bg-grid">
         {/* Navbar */}
-        <nav className="relative z-10 p-6 flex justify-between items-center border-b border-neon-cyan/30">
-          <div className="text-2xl font-bold neon-glow">SmartDesk</div>
+        <nav className="relative z-10 p-6 flex justify-between items-center border-b border-border-strong">
+          <div className="text-2xl font-bold text-primary">SmartDesk</div>
           <div className="flex gap-4 items-center">
             <span className="text-gray-400">{data.user?.username || "Student"}</span>
             <button onClick={handleLogout} className="btn-neon text-sm px-4 py-2">
@@ -165,15 +165,15 @@ export default function StudentDashboard({ initialData }) {
           </header>
 
           {/* Tabs */}
-          <div className="flex gap-2 mb-6 border-b border-neon-cyan/30 overflow-x-auto">
+          <div className="flex gap-2 mb-6 border-b border-border-strong overflow-x-auto">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-6 py-3 font-semibold transition-all whitespace-nowrap ${
                   activeTab === tab.id
-                    ? "text-neon-cyan border-b-2 border-neon-cyan"
-                    : "text-gray-400 hover:text-neon-pink"
+                    ? "text-brand border-b-2 border-border"
+                    : "text-gray-400 hover:text-brand-strong"
                 }`}
               >
                 <FontAwesomeIcon icon={tab.icon} className="mr-2" />
@@ -187,15 +187,15 @@ export default function StudentDashboard({ initialData }) {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* Quick Stats */}
               <div className="neon-card p-6 rounded-lg">
-                <h3 className="text-xl font-bold text-neon-cyan mb-4">Quick Stats</h3>
+                <h3 className="text-xl font-bold text-brand mb-4">Quick Stats</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-gray-400">Enrolled Courses</span>
-                    <span className="text-neon-cyan font-bold">{data.enrollments.length}</span>
+                    <span className="text-brand font-bold">{data.enrollments.length}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Pending Fees</span>
-                    <span className="text-neon-pink font-bold">
+                    <span className="text-brand-strong font-bold">
                       {data.fees.filter(f => f.status === "pending").length}
                     </span>
                   </div>
@@ -205,7 +205,7 @@ export default function StudentDashboard({ initialData }) {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Unread Notifications</span>
-                    <span className="text-neon-purple font-bold">
+                    <span className="text-accent font-bold">
                       {data.notifications.filter(n => !n.isRead).length}
                     </span>
                   </div>
@@ -214,11 +214,11 @@ export default function StudentDashboard({ initialData }) {
 
               {/* Recent Announcements */}
               <div className="neon-card p-6 rounded-lg">
-                <h3 className="text-xl font-bold text-neon-pink mb-4">Recent Announcements</h3>
+                <h3 className="text-xl font-bold text-brand-strong mb-4">Recent Announcements</h3>
                 <div className="space-y-3 max-h-64 overflow-y-auto">
                   {data.announcements && data.announcements.length > 0 ? (
                     data.announcements.slice(0, 5).map((ann) => (
-                      <div key={ann._id} className="border-b border-neon-cyan/20 pb-2">
+                      <div key={ann._id} className="border-b border-border/20 pb-2">
                         <div className="font-semibold text-white text-sm">{ann.title}</div>
                         <div className="text-xs text-gray-400 mt-1">{ann.type}</div>
                       </div>
@@ -234,7 +234,7 @@ export default function StudentDashboard({ initialData }) {
                 <h3 className="text-xl font-bold text-neon-green mb-4">Upcoming Events</h3>
                 <div className="space-y-3 max-h-64 overflow-y-auto">
                   {data.events.slice(0, 5).map((event) => (
-                    <div key={event._id} className="border-b border-neon-cyan/20 pb-2">
+                    <div key={event._id} className="border-b border-border/20 pb-2">
                       <div className="font-semibold text-white text-sm">{event.title}</div>
                       <div className="text-xs text-gray-400 mt-1">
                         {new Date(event.startDate).toLocaleDateString()}
@@ -249,14 +249,14 @@ export default function StudentDashboard({ initialData }) {
           {/* Courses Tab */}
           {activeTab === "courses" && (
             <div className="neon-card p-6 rounded-lg">
-              <h2 className="text-2xl font-bold text-neon-cyan mb-4">My Courses</h2>
+              <h2 className="text-2xl font-bold text-brand mb-4">My Courses</h2>
               {data.enrollments.length === 0 ? (
                 <p className="text-gray-500">No courses enrolled</p>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-neon-cyan/30">
+                      <tr className="border-b border-border-strong">
                         <th className="text-left py-2 text-gray-400">Course</th>
                         <th className="text-left py-2 text-gray-400">Semester</th>
                         <th className="text-left py-2 text-gray-400">Grade</th>
@@ -265,10 +265,10 @@ export default function StudentDashboard({ initialData }) {
                     </thead>
                     <tbody>
                       {data.enrollments.map((enrollment) => (
-                        <tr key={enrollment._id} className="border-b border-neon-cyan/10">
+                        <tr key={enrollment._id} className="border-b border-border/10">
                           <td className="py-3 text-white">{enrollment.course?.name || "N/A"}</td>
                           <td className="py-3 text-gray-400">{enrollment.semester}</td>
-                          <td className="py-3 text-neon-cyan font-bold">{enrollment.grade || "I"}</td>
+                          <td className="py-3 text-brand font-bold">{enrollment.grade || "I"}</td>
                           <td className="py-3">
                             <span className="px-2 py-1 rounded text-xs bg-neon-blue/20 text-neon-blue">
                               {enrollment.status}
@@ -286,13 +286,13 @@ export default function StudentDashboard({ initialData }) {
           {/* Attendance Tab */}
           {activeTab === "attendance" && (
             <div className="neon-card p-6 rounded-lg">
-              <h2 className="text-2xl font-bold text-neon-pink mb-4">Attendance</h2>
+              <h2 className="text-2xl font-bold text-brand-strong mb-4">Attendance</h2>
               {data.attendance.length === 0 ? (
                 <p className="text-gray-500">No attendance records</p>
               ) : (
                 <div className="space-y-4">
                   {data.attendance.map((record) => (
-                    <div key={record._id} className="border-b border-neon-cyan/20 pb-3">
+                    <div key={record._id} className="border-b border-border/20 pb-3">
                       <div className="flex justify-between items-center">
                         <div>
                           <div className="font-semibold text-white">{record.course?.name || "N/A"}</div>
@@ -325,7 +325,7 @@ export default function StudentDashboard({ initialData }) {
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-neon-cyan/30">
+                      <tr className="border-b border-border-strong">
                         <th className="text-left py-2 text-gray-400">Type</th>
                         <th className="text-left py-2 text-gray-400">Amount</th>
                         <th className="text-left py-2 text-gray-400">Paid</th>
@@ -335,7 +335,7 @@ export default function StudentDashboard({ initialData }) {
                     </thead>
                     <tbody>
                       {data.fees.map((fee) => (
-                        <tr key={fee._id} className="border-b border-neon-cyan/10">
+                        <tr key={fee._id} className="border-b border-border/10">
                           <td className="py-3 text-white capitalize">{fee.type}</td>
                           <td className="py-3 text-gray-400">₹{fee.amount}</td>
                           <td className="py-3 text-gray-400">₹{fee.paidAmount || 0}</td>
@@ -363,20 +363,20 @@ export default function StudentDashboard({ initialData }) {
           {/* Library Tab */}
           {activeTab === "library" && (
             <div className="neon-card p-6 rounded-lg">
-              <h2 className="text-2xl font-bold text-neon-purple mb-4">Library Books</h2>
+              <h2 className="text-2xl font-bold text-accent mb-4">Library Books</h2>
               {data.books.length === 0 ? (
                 <p className="text-gray-500">No books issued</p>
               ) : (
                 <div className="space-y-4">
                   {data.books.map((book) => (
-                    <div key={book._id} className="border-b border-neon-cyan/20 pb-3">
+                    <div key={book._id} className="border-b border-border/20 pb-3">
                       <div className="flex justify-between items-center">
                         <div>
                           <div className="font-semibold text-white">{book.book?.title || "N/A"}</div>
                           <div className="text-sm text-gray-400">Due: {new Date(book.dueDate).toLocaleDateString()}</div>
                         </div>
                         <span className={`px-3 py-1 rounded text-sm ${
-                          book.status === "issued" ? "bg-neon-cyan/20 text-neon-cyan" :
+                          book.status === "issued" ? "bg-neon-cyan/20 text-brand" :
                           book.status === "overdue" ? "bg-red-900/30 text-red-300" :
                           "bg-green-900/30 text-green-300"
                         }`}>
@@ -395,7 +395,7 @@ export default function StudentDashboard({ initialData }) {
             <div className="grid md:grid-cols-2 gap-6">
               {data.events.map((event) => (
                 <div key={event._id} className="neon-card p-6 rounded-lg">
-                  <h3 className="text-xl font-bold text-neon-cyan mb-2">{event.title}</h3>
+                  <h3 className="text-xl font-bold text-brand mb-2">{event.title}</h3>
                   <p className="text-gray-400 text-sm mb-4">{event.description}</p>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
@@ -408,7 +408,7 @@ export default function StudentDashboard({ initialData }) {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-400">Type:</span>
-                      <span className="text-neon-pink capitalize">{event.type}</span>
+                      <span className="text-brand-strong capitalize">{event.type}</span>
                     </div>
                   </div>
                 </div>
@@ -420,7 +420,7 @@ export default function StudentDashboard({ initialData }) {
           {activeTab === "feedback" && (
             <div className="grid md:grid-cols-3 gap-6">
               <div className="md:col-span-2 neon-card p-6 rounded-lg">
-                <h2 className="text-2xl font-bold text-neon-cyan mb-4">Submit Feedback</h2>
+                <h2 className="text-2xl font-bold text-brand mb-4">Submit Feedback</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">Topic</label>
@@ -461,19 +461,19 @@ export default function StudentDashboard({ initialData }) {
                 </form>
               </div>
               <div className="neon-card p-6 rounded-lg">
-                <h2 className="text-2xl font-bold text-neon-pink mb-4">Top Topics</h2>
+                <h2 className="text-2xl font-bold text-brand-strong mb-4">Top Topics</h2>
                 {data.topTopics.length === 0 ? (
                   <p className="text-gray-500 text-sm">No topics yet</p>
                 ) : (
                   <ul className="space-y-3">
                     {data.topTopics.map((t) => (
-                      <li key={t._id} className="border-b border-neon-cyan/20 pb-3 last:border-0">
+                      <li key={t._id} className="border-b border-border/20 pb-3 last:border-0">
                         <div className="flex justify-between items-start">
                           <div className="flex-1">
                             <div className="font-semibold text-white mb-1">{t.topic}</div>
                             <div className="text-xs text-gray-400">{t.category}</div>
                           </div>
-                          <span className="px-2 py-1 bg-neon-cyan/20 text-neon-cyan rounded text-xs font-bold">
+                          <span className="px-2 py-1 bg-neon-cyan/20 text-brand rounded text-xs font-bold">
                             {t.votes}
                           </span>
                         </div>

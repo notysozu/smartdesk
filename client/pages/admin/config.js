@@ -98,11 +98,11 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
 
   const getColorClasses = (color) => {
     const colors = {
-      cyan: "border-neon-cyan text-neon-cyan",
-      pink: "border-neon-pink text-neon-pink",
+      cyan: "border-border text-brand",
+      pink: "border-border-strong text-brand-strong",
       green: "border-neon-green text-neon-green",
       blue: "border-neon-blue text-neon-blue",
-      purple: "border-neon-purple text-neon-purple"
+      purple: "border-neon-purple text-accent"
     };
     return colors[color] || colors.cyan;
   };
@@ -114,17 +114,17 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
       <Head>
         <title>Configuration - SmartDesk Admin</title>
       </Head>
-      <div className="min-h-screen bg-dark relative">
-        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-card border-r border-neon-cyan/30 z-40 p-6">
+      <div className="min-h-screen bg-background relative">
+        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-surface border-r border-border-strong z-40 p-6">
           <div className="mb-8">
-            <Link href="/admin" className="text-2xl font-bold neon-glow block">SmartDesk</Link>
+            <Link href="/admin" className="text-2xl font-bold text-primary block">SmartDesk</Link>
             <p className="text-xs text-gray-400 mt-1">Admin Control Center</p>
           </div>
           <nav className="space-y-2">
-            <Link href="/admin" className="block px-4 py-3 rounded border border-neon-cyan/30 text-gray-400 hover:text-neon-cyan transition-all">
+            <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <span className="mr-2"><FontAwesomeIcon icon={faHome} className="mr-2" /></span> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-pink/30 bg-neon-pink/10 text-neon-pink">
+            <div className="block px-4 py-3 rounded border border-border-strong/30 bg-neon-pink/10 text-brand-strong">
               <span className="mr-2"><FontAwesomeIcon icon={faCog} className="mr-2" /></span> Configuration
             </div>
           </nav>
@@ -155,11 +155,11 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
           {/* System Stats */}
           <div className="grid md:grid-cols-4 gap-4 mb-8">
             <div className="futuristic-card text-center">
-              <div className="text-2xl font-bold text-neon-cyan">{stats.departments || 0}</div>
+              <div className="text-2xl font-bold text-brand">{stats.departments || 0}</div>
               <div className="text-sm text-gray-400">Departments</div>
             </div>
             <div className="futuristic-card text-center">
-              <div className="text-2xl font-bold text-neon-pink">{stats.courses || 0}</div>
+              <div className="text-2xl font-bold text-brand-strong">{stats.courses || 0}</div>
               <div className="text-sm text-gray-400">Courses</div>
             </div>
             <div className="futuristic-card text-center">
@@ -167,13 +167,13 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
               <div className="text-sm text-gray-400">Buildings</div>
             </div>
             <div className="futuristic-card text-center">
-              <div className="text-2xl font-bold text-neon-purple">{stats.users || 0}</div>
+              <div className="text-2xl font-bold text-accent">{stats.users || 0}</div>
               <div className="text-sm text-gray-400">Users</div>
             </div>
           </div>
 
           {/* Category Tabs */}
-          <div className="flex gap-4 mb-6 border-b border-neon-cyan/30 overflow-x-auto">
+          <div className="flex gap-4 mb-6 border-b border-border-strong overflow-x-auto">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -181,7 +181,7 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
                 className={`px-6 py-3 font-semibold transition-all whitespace-nowrap ${
                   selectedCategory === cat.id
                     ? `text-${cat.color === "cyan" ? "neon-cyan" : cat.color === "pink" ? "neon-pink" : cat.color === "green" ? "neon-green" : cat.color === "blue" ? "neon-blue" : "neon-purple"} border-b-2 border-${cat.color === "cyan" ? "neon-cyan" : cat.color === "pink" ? "neon-pink" : cat.color === "green" ? "neon-green" : cat.color === "blue" ? "neon-blue" : "neon-purple"}`
-                    : "text-gray-400 hover:text-neon-cyan"
+                    : "text-gray-400 hover:text-brand"
                 }`}
               >
                 <span className="mr-2">{cat.icon}</span>
@@ -201,15 +201,15 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
             ) : (
               <div className="grid md:grid-cols-2 gap-4">
                 {Object.entries(categoryConfigs).map(([key, value]) => (
-                  <div key={key} className="border border-neon-cyan/20 p-4 rounded hover:border-neon-cyan/50 transition-all">
+                  <div key={key} className="border border-border/20 p-4 rounded hover:border-border/50 transition-all">
                     <div className="flex justify-between items-start mb-2">
-                      <div className="text-sm font-semibold text-neon-cyan">{key}</div>
+                      <div className="text-sm font-semibold text-brand">{key}</div>
                       <button
                         onClick={() => {
                           const newValue = prompt("Enter new value:", String(value));
                           if (newValue !== null) handleUpdateValue(selectedCategory, key, newValue);
                         }}
-                        className="text-xs text-neon-pink hover:text-neon-cyan"
+                        className="text-xs text-brand-strong hover:text-brand"
                       >
                         Edit
                       </button>
