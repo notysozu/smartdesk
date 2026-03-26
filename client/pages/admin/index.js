@@ -150,11 +150,11 @@ export default function AdminDashboard({ stats, user }) {
 
   const getColorClasses = (color) => {
     const colors = {
-      cyan: "border-border text-brand shadow-[0_0_20px_rgba(0,255,255,0.5)]",
-      pink: "border-border-strong text-brand-strong shadow-[0_0_20px_rgba(255,0,255,0.5)]",
-      green: "border-success text-success shadow-[0_0_20px_rgba(0,255,0,0.5)]",
-      blue: "border-brand text-brand shadow-[0_0_20px_rgba(0,128,255,0.5)]",
-      purple: "border-accent text-accent shadow-[0_0_20px_rgba(128,0,255,0.5)]"
+      cyan: "border-border text-brand",
+      pink: "border-border-strong text-brand-strong",
+      green: "border-success text-success",
+      blue: "border-brand text-brand",
+      purple: "border-accent text-accent"
     };
     return colors[color] || colors.cyan;
   };
@@ -166,23 +166,23 @@ export default function AdminDashboard({ stats, user }) {
       </Head>
       <div className="min-h-screen bg-background relative">
         {/* Sidebar */}
-        <aside className="fixed left-0 top-0 h-full w-64 bg-bg-surface border-r border-border-strong z-40 p-6">
+        <aside className="fixed left-0 top-0 h-full w-64 bg-surface border-r border-border z-40 p-5">
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-primary">SmartDesk</h1>
-            <p className="text-xs text-gray-400 mt-1">Admin Control Center</p>
+            <h1 className="text-xl font-bold text-primary">SmartDesk</h1>
+            <p className="text-xs text-muted mt-1">Admin Control Center</p>
           </div>
 
-          <nav className="space-y-2">
-            <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong bg-brand/10 text-brand hover:bg-brand/20 transition-all">
-              <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
+          <nav className="space-y-1">
+            <Link href="/admin" className="block px-3 py-2 rounded text-sm font-medium bg-brand/10 text-brand transition-all">
+              <FontAwesomeIcon icon={faHome} className="mr-2 w-4 text-center" /> Dashboard
             </Link>
             {featureModules.map((module) => (
               <Link
                 key={module.id}
                 href={module.link}
-                className={`block px-4 py-3 rounded border ${getColorClasses(module.color)} hover:bg-opacity-10 transition-all`}
+                className={`block px-3 py-2 rounded text-sm font-medium text-secondary hover:bg-surface-muted hover:text-primary transition-all`}
               >
-                <FontAwesomeIcon icon={module.icon} className="mr-2" /> {module.title}
+                <FontAwesomeIcon icon={module.icon} className="mr-2 w-4 text-center" /> {module.title}
               </Link>
             ))}
           </nav>
@@ -202,8 +202,8 @@ export default function AdminDashboard({ stats, user }) {
           {/* Header */}
           <header className="mb-8 flex justify-between items-center">
             <div>
-              <h1 className="text-4xl font-bold text-gradient-neon mb-2">Admin Dashboard</h1>
-              <p className="text-gray-400">Welcome back, {user?.username || "Admin"}</p>
+              <h1 className="text-3xl font-bold text-primary mb-1">Admin Dashboard</h1>
+              <p className="text-sm text-muted">Welcome back, {user?.username || "Admin"}</p>
             </div>
             <div className="flex items-center gap-4">
               {notifications.length > 0 && (
@@ -218,7 +218,7 @@ export default function AdminDashboard({ stats, user }) {
           </header>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             <div className="futuristic-card">
               <div className="flex items-center justify-between mb-4">
                 <FontAwesomeIcon icon={faUsers} className="text-3xl" />
@@ -255,20 +255,22 @@ export default function AdminDashboard({ stats, user }) {
 
           {/* Feature Modules Grid */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gradient-neon mb-6">Feature Modules</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <h2 className="text-xl font-bold text-primary mb-4">Feature Modules</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {featureModules.map((module) => (
                 <Link
                   key={module.id}
                   href={module.link}
-                  className={`futuristic-card hover-lift group ${getColorClasses(module.color)}`}
+                  className={`futuristic-card flex flex-col justify-between hover-lift group ${getColorClasses(module.color)}`}
                 >
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
-                    <FontAwesomeIcon icon={module.icon} />
+                  <div>
+                    <div className="text-2xl mb-3 group-hover:scale-105 transition-transform">
+                      <FontAwesomeIcon icon={module.icon} />
+                    </div>
+                    <h3 className="text-lg font-bold mb-1 text-primary">{module.title}</h3>
+                    <p className="text-sm text-secondary">{module.description}</p>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{module.title}</h3>
-                  <p className="text-sm text-gray-400">{module.description}</p>
-                  <div className="mt-4 text-xs text-brand opacity-0 group-hover:opacity-100 transition-opacity flex items-center">
+                  <div className="mt-4 text-xs font-medium text-brand opacity-0 group-hover:opacity-100 transition-opacity flex items-center">
                     Click to manage <FontAwesomeIcon icon={faArrowRight} className="ml-1" />
                   </div>
                 </Link>
@@ -278,8 +280,8 @@ export default function AdminDashboard({ stats, user }) {
 
           {/* Recent Activity */}
           <div className="futuristic-card">
-            <h2 className="text-2xl font-bold text-gradient-neon mb-4">System Overview</h2>
-            <div className="grid md:grid-cols-3 gap-6">
+            <h2 className="text-xl font-bold text-primary mb-4">System Overview</h2>
+            <div className="grid md:grid-cols-3 gap-4">
               <div>
                 <div className="text-sm text-gray-400 mb-2">Departments</div>
                 <div className="text-2xl font-bold text-brand">{stats.totalDepartments || 0}</div>
