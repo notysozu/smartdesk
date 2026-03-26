@@ -6,8 +6,8 @@
 |---|-------|------|--------------|------------------|
 | 1 | Design Tokens | Establish the new core visual foundation in Tailwind | TOK-01 | 2 |
 | 2 | Shared Primitives | Update standard UI components to match the new tokens | PRIM-01 | 3 |
-| 3 | Admin Dashboard | Refactor the dashboard layout and visual hierarchy | PAGES-02 | 3 |
-| 4 | Landing Page | Give the homepage a premium SaaS marketing feel | PAGES-01 | 3 |
+| 3 | Admin Dashboard | Refactor the dashboard layout and visual hierarchy | PAGES-01 | 3 |
+| 4 | Landing Page | Give the homepage a premium SaaS marketing feel | PAGES-02 | 3 |
 | 5 | Consistency Pass | Ensure all remaining admin pages use the new system | CONS-01 | 2 |
 
 ### Phase Details
@@ -31,7 +31,7 @@ Success criteria:
 
 **Phase 3: Admin Dashboard**
 Goal: Modernize the admin operations console.
-Requirements: PAGES-02
+Requirements: PAGES-01
 Success criteria:
 1. Dashboard utilizes the new card, header, and table primitives.
 2. KPIs and quick actions are clearly surfaced with reduced visual noise.
@@ -40,7 +40,7 @@ Success criteria:
 
 **Phase 4: Landing Page**
 Goal: Refresh the public-facing landing page.
-Requirements: PAGES-01
+Requirements: PAGES-02
 Success criteria:
 1. Hero section feels ambitious but calm with restricted gradient atmosphere.
 2. Sections flow with strong narrative (value prop, product modules, trust).
