@@ -58,6 +58,42 @@ Made with 💚 by [rynixofficial](https://github.com/rynixsnpsu)
 - MongoDB (local or cloud)
 - Ollama (optional, for AI features)
 
+## One-Command Install
+
+Security note:
+- Review remote scripts before using pipe-to-shell installers.
+- These commands create `.env` and `client/.env.local` from the example files if they do not already exist.
+
+Linux / macOS:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/notysozu/smartdesk/main/install.sh | bash
+```
+
+Linux / macOS with `wget`:
+
+```bash
+wget -qO- https://raw.githubusercontent.com/notysozu/smartdesk/main/install.sh | bash
+```
+
+Windows PowerShell:
+
+```powershell
+iwr https://raw.githubusercontent.com/notysozu/smartdesk/main/install.ps1 -UseBasicParsing | iex
+```
+
+Useful installer options:
+
+- `START_APP=0` skips launching the app after install
+- `SEED_DB=1` seeds the default SmartDesk users after dependencies are installed
+- `INSTALL_DIR=/custom/path` installs the repo into a custom folder when cloning
+
+Example:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/notysozu/smartdesk/main/install.sh | START_APP=0 SEED_DB=1 bash
+```
+
 ## Installation
 
 ### Backend Setup
@@ -74,7 +110,7 @@ cp .env.example .env
 # JWT_SECRET=your-secret-key
 # CLIENT_ORIGIN=http://localhost:3000
 
-# Seed database with default users
+# Seed database with default users (optional)
 npm run seed
 
 # Start development server
@@ -89,8 +125,42 @@ cd client
 # Install dependencies
 npm install
 
+# Copy the frontend environment file if needed
+cp .env.example .env.local
+
 # Start development server
 npm run dev
+```
+
+### Manual Install Fallback
+
+1. Install Git and Node.js 20+.
+2. Clone the repo:
+
+```bash
+git clone https://github.com/notysozu/smartdesk.git
+cd smartdesk
+```
+
+3. Copy the environment templates:
+
+```bash
+cp .env.example .env
+cp client/.env.example client/.env.local
+```
+
+4. Install backend and frontend dependencies:
+
+```bash
+npm install
+cd client && npm install && cd ..
+```
+
+5. Start the backend and frontend in separate terminals:
+
+```bash
+npm run dev
+cd client && npm run dev
 ```
 
 ## Default Users
