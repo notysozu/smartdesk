@@ -14,3 +14,4 @@ client/.next/
 .vercel/
 *.hot-update.js
 *.hot-update.json
+.vercel
