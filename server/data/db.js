@@ -15,7 +15,9 @@ const connectDB = async () => {
     mongoose.set("strictQuery", true);
 
     connectionPromise = mongoose.connect(process.env.MONGO_URI, {
-      autoIndex: true
+      autoIndex: true,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 10000
     });
 
     await connectionPromise;
