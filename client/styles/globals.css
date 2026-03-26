@@ -75,6 +75,7 @@
 
   .neon-card, .futuristic-card, .glass {
     border-radius: 1.5rem; /* 2xl */
+    padding: 1.5rem; /* Default baseline padding */
     border: 1px solid var(--surface-border);
     background: var(--surface);
     backdrop-filter: blur(var(--blur-md));
