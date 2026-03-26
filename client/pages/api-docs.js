@@ -6,6 +6,10 @@ const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:4000"
 
 export default function APIDocumentation() {
   const [selectedEndpoint, setSelectedEndpoint] = useState(null);
+  const sampleGetRequest = `fetch('${API_BASE}/api/users', {
+  credentials: 'include',
+  headers: { 'Content-Type': 'application/json' }
+})`;
 
   const endpoints = [
     {
@@ -239,15 +243,7 @@ export default function APIDocumentation() {
               Most endpoints require authentication. Include credentials in your requests:
             </p>
             <div className="bg-bg-darker p-4 rounded border border-neon-cyan/20">
-              <code className="text-neon-green text-sm">
-                fetch('{API_BASE}/api/users', {'{'}
-                <br />
-                &nbsp;&nbsp;credentials: 'include',
-                <br />
-                &nbsp;&nbsp;headers: {'{'} 'Content-Type': 'application/json' {'}'}
-                <br />
-                {'}'})
-              </code>
+              <pre className="text-neon-green text-sm whitespace-pre-wrap">{sampleGetRequest}</pre>
             </div>
           </div>
 
@@ -306,31 +302,18 @@ export default function APIDocumentation() {
                         )}
                         <div className="bg-bg-darker p-3 rounded text-sm">
                           <h4 className="text-sm font-semibold text-neon-cyan mb-2">Example Request</h4>
-                          <code className="text-neon-green text-xs">
-                            {route.method === "GET" ? (
-                              <>
-                                fetch('{API_BASE}{route.path}', {'{'}
-                                <br />
-                                &nbsp;&nbsp;credentials: 'include'
-                                <br />
-                                {'}'})
-                              </>
-                            ) : (
-                              <>
-                                fetch('{API_BASE}{route.path}', {'{'}
-                                <br />
-                                &nbsp;&nbsp;method: '{route.method}',
-                                <br />
-                                &nbsp;&nbsp;headers: {'{'} 'Content-Type': 'application/json' {'}'},
-                                <br />
-                                &nbsp;&nbsp;credentials: 'include',
-                                <br />
-                                &nbsp;&nbsp;body: JSON.stringify({'{'} ... {'}'})
-                                <br />
-                                {'}'})
-                              </>
-                            )}
-                          </code>
+                          <pre className="text-neon-green text-xs whitespace-pre-wrap">
+                            {route.method === "GET"
+                              ? `fetch('${API_BASE}${route.path}', {
+  credentials: 'include'
+})`
+                              : `fetch('${API_BASE}${route.path}', {
+  method: '${route.method}',
+  headers: { 'Content-Type': 'application/json' },
+  credentials: 'include',
+  body: JSON.stringify({ ... })
+})`}
+                          </pre>
                         </div>
                       </div>
                     )}
