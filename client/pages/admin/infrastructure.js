@@ -97,7 +97,7 @@ export default function InfrastructureDashboard() {
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-blue/30 bg-neon-blue/10 text-neon-blue">
+            <div className="block px-4 py-3 rounded border border-brand/30 bg-brand/10 text-brand">
               <FontAwesomeIcon icon={faBuilding} className="mr-2" /> Infrastructure
             </div>
           </nav>
@@ -121,7 +121,7 @@ export default function InfrastructureDashboard() {
                 onClick={() => setActiveTab(tab)}
                 className={`px-6 py-3 font-semibold capitalize transition-all ${
                   activeTab === tab
-                    ? "text-neon-blue border-b-2 border-neon-blue"
+                    ? "text-brand border-b-2 border-brand"
                     : "text-gray-400 hover:text-brand"
                 }`}
               >
@@ -153,8 +153,8 @@ export default function InfrastructureDashboard() {
                   </thead>
                   <tbody>
                     {buildings.map((building) => (
-                      <tr key={building._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
-                        <td className="py-3 px-4 text-neon-blue font-bold">{building.code}</td>
+                      <tr key={building._id} className="border-b border-border/10 hover:bg-brand/5">
+                        <td className="py-3 px-4 text-brand font-bold">{building.code}</td>
                         <td className="py-3 px-4 text-white">{building.name}</td>
                         <td className="py-3 px-4 text-gray-400">{building.address}</td>
                         <td className="py-3 px-4 text-brand">{building.floors}</td>
@@ -189,8 +189,8 @@ export default function InfrastructureDashboard() {
                 </thead>
                 <tbody>
                   {rooms.map((room) => (
-                    <tr key={room._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
-                      <td className="py-3 px-4 text-neon-blue font-bold">{room.roomNumber}</td>
+                    <tr key={room._id} className="border-b border-border/10 hover:bg-brand/5">
+                      <td className="py-3 px-4 text-brand font-bold">{room.roomNumber}</td>
                       <td className="py-3 px-4 text-white">{room.building?.name || "—"}</td>
                       <td className="py-3 px-4 text-gray-400 capitalize">{room.type}</td>
                       <td className="py-3 px-4 text-brand">{room.capacity}</td>

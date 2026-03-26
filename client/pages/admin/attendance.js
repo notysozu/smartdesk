@@ -97,7 +97,7 @@ export default function AttendanceDashboard() {
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <span className="mr-2"><FontAwesomeIcon icon={faHome} className="mr-2" /></span> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-blue/30 bg-neon-blue/10 text-neon-blue">
+            <div className="block px-4 py-3 rounded border border-brand/30 bg-brand/10 text-brand">
               <span className="mr-2"><FontAwesomeIcon icon={faCheck} className="mr-2" /></span> Attendance
             </div>
           </nav>
@@ -134,7 +134,7 @@ export default function AttendanceDashboard() {
               </thead>
               <tbody>
                 {attendance.map((record) => (
-                  <tr key={record._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
+                  <tr key={record._id} className="border-b border-border/10 hover:bg-brand/5">
                     <td className="py-3 px-4 text-white">{record.student?.username || "—"}</td>
                     <td className="py-3 px-4 text-gray-400">{record.course?.name || "—"}</td>
                     <td className="py-3 px-4 text-brand">{new Date(record.date).toLocaleDateString()}</td>

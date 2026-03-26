@@ -110,7 +110,7 @@ export default function EventsDashboard() {
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-border-strong/30 bg-neon-pink/10 text-brand-strong">
+            <div className="block px-4 py-3 rounded border border-border-strong/30 bg-brand-strong/10 text-brand-strong">
               <FontAwesomeIcon icon={faCalendarAlt} className="mr-2" /> Events
             </div>
           </nav>
@@ -152,7 +152,7 @@ export default function EventsDashboard() {
               </thead>
               <tbody>
                 {events.map((event) => (
-                  <tr key={event._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
+                  <tr key={event._id} className="border-b border-border/10 hover:bg-brand/5">
                     <td className="py-3 px-4 text-white font-semibold">{event.name}</td>
                     <td className="py-3 px-4 text-gray-400 capitalize">{event.category}</td>
                     <td className="py-3 px-4 text-brand">{new Date(event.startDate).toLocaleDateString()}</td>

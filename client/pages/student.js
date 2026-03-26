@@ -201,7 +201,7 @@ export default function StudentDashboard({ initialData }) {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Books Issued</span>
-                    <span className="text-neon-green font-bold">{data.books.length}</span>
+                    <span className="text-success font-bold">{data.books.length}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Unread Notifications</span>
@@ -231,7 +231,7 @@ export default function StudentDashboard({ initialData }) {
 
               {/* Upcoming Events */}
               <div className="neon-card p-6 rounded-lg">
-                <h3 className="text-xl font-bold text-neon-green mb-4">Upcoming Events</h3>
+                <h3 className="text-xl font-bold text-success mb-4">Upcoming Events</h3>
                 <div className="space-y-3 max-h-64 overflow-y-auto">
                   {data.events.slice(0, 5).map((event) => (
                     <div key={event._id} className="border-b border-border/20 pb-2">
@@ -270,7 +270,7 @@ export default function StudentDashboard({ initialData }) {
                           <td className="py-3 text-gray-400">{enrollment.semester}</td>
                           <td className="py-3 text-brand font-bold">{enrollment.grade || "I"}</td>
                           <td className="py-3">
-                            <span className="px-2 py-1 rounded text-xs bg-neon-blue/20 text-neon-blue">
+                            <span className="px-2 py-1 rounded text-xs bg-brand/20 text-brand">
                               {enrollment.status}
                             </span>
                           </td>
@@ -318,7 +318,7 @@ export default function StudentDashboard({ initialData }) {
           {/* Fees Tab */}
           {activeTab === "fees" && (
             <div className="neon-card p-6 rounded-lg">
-              <h2 className="text-2xl font-bold text-neon-green mb-4">Fee Status</h2>
+              <h2 className="text-2xl font-bold text-success mb-4">Fee Status</h2>
               {data.fees.length === 0 ? (
                 <p className="text-gray-500">No fee records</p>
               ) : (
@@ -376,7 +376,7 @@ export default function StudentDashboard({ initialData }) {
                           <div className="text-sm text-gray-400">Due: {new Date(book.dueDate).toLocaleDateString()}</div>
                         </div>
                         <span className={`px-3 py-1 rounded text-sm ${
-                          book.status === "issued" ? "bg-neon-cyan/20 text-brand" :
+                          book.status === "issued" ? "bg-brand/20 text-brand" :
                           book.status === "overdue" ? "bg-red-900/30 text-red-300" :
                           "bg-green-900/30 text-green-300"
                         }`}>
@@ -473,7 +473,7 @@ export default function StudentDashboard({ initialData }) {
                             <div className="font-semibold text-white mb-1">{t.topic}</div>
                             <div className="text-xs text-gray-400">{t.category}</div>
                           </div>
-                          <span className="px-2 py-1 bg-neon-cyan/20 text-brand rounded text-xs font-bold">
+                          <span className="px-2 py-1 bg-brand/20 text-brand rounded text-xs font-bold">
                             {t.votes}
                           </span>
                         </div>

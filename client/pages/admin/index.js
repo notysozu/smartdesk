@@ -152,9 +152,9 @@ export default function AdminDashboard({ stats, user }) {
     const colors = {
       cyan: "border-border text-brand shadow-[0_0_20px_rgba(0,255,255,0.5)]",
       pink: "border-border-strong text-brand-strong shadow-[0_0_20px_rgba(255,0,255,0.5)]",
-      green: "border-neon-green text-neon-green shadow-[0_0_20px_rgba(0,255,0,0.5)]",
-      blue: "border-neon-blue text-neon-blue shadow-[0_0_20px_rgba(0,128,255,0.5)]",
-      purple: "border-neon-purple text-accent shadow-[0_0_20px_rgba(128,0,255,0.5)]"
+      green: "border-success text-success shadow-[0_0_20px_rgba(0,255,0,0.5)]",
+      blue: "border-brand text-brand shadow-[0_0_20px_rgba(0,128,255,0.5)]",
+      purple: "border-accent text-accent shadow-[0_0_20px_rgba(128,0,255,0.5)]"
     };
     return colors[color] || colors.cyan;
   };
@@ -173,7 +173,7 @@ export default function AdminDashboard({ stats, user }) {
           </div>
 
           <nav className="space-y-2">
-            <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong bg-neon-cyan/10 text-brand hover:bg-neon-cyan/20 transition-all">
+            <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong bg-brand/10 text-brand hover:bg-brand/20 transition-all">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
             </Link>
             {featureModules.map((module) => (
@@ -209,7 +209,7 @@ export default function AdminDashboard({ stats, user }) {
               {notifications.length > 0 && (
                 <div className="relative">
                   <FontAwesomeIcon icon={faBell} className="text-2xl" />
-                  <span className="absolute -top-1 -right-1 bg-neon-pink text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-brand-strong text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     {notifications.length}
                   </span>
                 </div>
@@ -240,7 +240,7 @@ export default function AdminDashboard({ stats, user }) {
                 <FontAwesomeIcon icon={faMoneyBillWave} className="text-3xl" />
                 <span className="status-online"></span>
               </div>
-              <div className="text-3xl font-bold text-neon-green mb-1">{stats.pendingFees || 0}</div>
+              <div className="text-3xl font-bold text-success mb-1">{stats.pendingFees || 0}</div>
               <div className="text-sm text-gray-400">Pending Fees</div>
             </div>
             <div className="futuristic-card">
@@ -290,7 +290,7 @@ export default function AdminDashboard({ stats, user }) {
               </div>
               <div>
                 <div className="text-sm text-gray-400 mb-2">Upcoming Events</div>
-                <div className="text-2xl font-bold text-neon-green">{stats.totalEvents || 0}</div>
+                <div className="text-2xl font-bold text-success">{stats.totalEvents || 0}</div>
               </div>
             </div>
           </div>

@@ -70,7 +70,7 @@ export default function AnalyticsDashboard({ analytics, insights, selectedCatego
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <span className="mr-2"><FontAwesomeIcon icon={faHome} /></span> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-green/30 bg-neon-green/10 text-neon-green">
+            <div className="block px-4 py-3 rounded border border-success/30 bg-success/10 text-success">
               <span className="mr-2"><FontAwesomeIcon icon={faChartBar} /></span> Analytics
             </div>
           </nav>
@@ -141,7 +141,7 @@ export default function AnalyticsDashboard({ analytics, insights, selectedCatego
 
           {insights && (
             <div className="futuristic-card">
-              <h3 className="text-xl font-bold text-neon-green mb-4">Executive Summary</h3>
+              <h3 className="text-xl font-bold text-success mb-4">Executive Summary</h3>
               <p className="text-gray-300 whitespace-pre-line">{insights.summary}</p>
               <p className="text-xs text-gray-500 mt-2">Source: {insights.summarySource}</p>
             </div>

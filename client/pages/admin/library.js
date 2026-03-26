@@ -97,7 +97,7 @@ export default function LibraryDashboard() {
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-border-strong bg-neon-cyan/10 text-brand">
+            <div className="block px-4 py-3 rounded border border-border-strong bg-brand/10 text-brand">
               <FontAwesomeIcon icon={faBookOpen} className="mr-2" /> Library
             </div>
           </nav>
@@ -154,12 +154,12 @@ export default function LibraryDashboard() {
                   </thead>
                   <tbody>
                     {books.map((book) => (
-                      <tr key={book._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
+                      <tr key={book._id} className="border-b border-border/10 hover:bg-brand/5">
                         <td className="py-3 px-4 text-white font-semibold">{book.title}</td>
                         <td className="py-3 px-4 text-gray-400">{book.author}</td>
                         <td className="py-3 px-4 text-brand">{book.isbn}</td>
                         <td className="py-3 px-4 text-gray-400">{book.category}</td>
-                        <td className="py-3 px-4 text-neon-green">{book.copies}</td>
+                        <td className="py-3 px-4 text-success">{book.copies}</td>
                         <td className="py-3 px-4 text-brand-strong">{book.availableCopies || 0}</td>
                       </tr>
                     ))}
@@ -183,7 +183,7 @@ export default function LibraryDashboard() {
                 </thead>
                 <tbody>
                   {issues.map((issue) => (
-                    <tr key={issue._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
+                    <tr key={issue._id} className="border-b border-border/10 hover:bg-brand/5">
                       <td className="py-3 px-4 text-white">{issue.student?.username || "—"}</td>
                       <td className="py-3 px-4 text-gray-400">{issue.book?.title || "—"}</td>
                       <td className="py-3 px-4 text-brand">{new Date(issue.issueDate).toLocaleDateString()}</td>

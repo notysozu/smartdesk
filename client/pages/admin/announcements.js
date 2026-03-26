@@ -108,7 +108,7 @@ export default function AnnouncementsDashboard() {
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-border-strong bg-neon-cyan/10 text-brand">
+            <div className="block px-4 py-3 rounded border border-border-strong bg-brand/10 text-brand">
               <FontAwesomeIcon icon={faBullhorn} className="mr-2" /> Announcements
             </div>
           </nav>
@@ -149,7 +149,7 @@ export default function AnnouncementsDashboard() {
               </thead>
               <tbody>
                 {announcements.map((ann) => (
-                  <tr key={ann._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
+                  <tr key={ann._id} className="border-b border-border/10 hover:bg-brand/5">
                     <td className="py-3 px-4 text-white font-semibold">{ann.title}</td>
                     <td className="py-3 px-4 text-gray-400 capitalize">{ann.type}</td>
                     <td className="py-3 px-4">

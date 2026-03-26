@@ -139,7 +139,7 @@ export default function UserManagement({ initialUsers, roles }) {
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <span className="mr-2">🏠</span> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-border-strong/30 bg-neon-pink/10 text-brand-strong">
+            <div className="block px-4 py-3 rounded border border-border-strong/30 bg-brand-strong/10 text-brand-strong">
               <span className="mr-2">👥</span> Users
             </div>
           </nav>
@@ -211,14 +211,14 @@ export default function UserManagement({ initialUsers, roles }) {
               </thead>
               <tbody>
                 {filteredUsers.map((user) => (
-                  <tr key={user._id} className="border-b border-border/10 hover:bg-neon-cyan/5 transition-colors">
+                  <tr key={user._id} className="border-b border-border/10 hover:bg-brand/5 transition-colors">
                     <td className="py-3 px-4 text-white">{user.username}</td>
                     <td className="py-3 px-4 text-gray-400">{user.email}</td>
                     <td className="py-3 px-4">
                       <span className={`px-3 py-1 rounded text-xs border ${
                         user.role === "admin" ? "border-border-strong text-brand-strong" :
                         user.role === "student" ? "border-border text-brand" :
-                        "border-neon-green text-neon-green"
+                        "border-success text-success"
                       }`}>
                         {roles[user.role]?.name || user.role}
                       </span>

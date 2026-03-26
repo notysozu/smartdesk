@@ -200,17 +200,17 @@ export default function APIDocumentation() {
     const colors = {
       cyan: "border-border text-brand",
       pink: "border-border-strong text-brand-strong",
-      green: "border-neon-green text-neon-green",
-      blue: "border-neon-blue text-neon-blue",
-      purple: "border-neon-purple text-accent"
+      green: "border-success text-success",
+      blue: "border-brand text-brand",
+      purple: "border-accent text-accent"
     };
     return colors[color] || colors.cyan;
   };
 
   const getMethodColor = (method) => {
     const colors = {
-      GET: "bg-neon-green/20 text-neon-green border-neon-green",
-      POST: "bg-neon-blue/20 text-neon-blue border-neon-blue",
+      GET: "bg-success/20 text-success border-success",
+      POST: "bg-brand/20 text-brand border-brand",
       PUT: "bg-neon-yellow/20 text-neon-yellow border-neon-yellow",
       DELETE: "bg-red-500/20 text-red-400 border-red-500"
     };
@@ -243,7 +243,7 @@ export default function APIDocumentation() {
               Most endpoints require authentication. Include credentials in your requests:
             </p>
             <div className="bg-bg-background-soft p-4 rounded border border-border/20">
-              <pre className="text-neon-green text-sm whitespace-pre-wrap">{sampleGetRequest}</pre>
+              <pre className="text-success text-sm whitespace-pre-wrap">{sampleGetRequest}</pre>
             </div>
           </div>
 
@@ -266,7 +266,7 @@ export default function APIDocumentation() {
                         </span>
                         <code className="text-brand font-mono">{route.path}</code>
                         {route.auth && (
-                          <span className="px-2 py-1 bg-neon-pink/20 text-brand-strong text-xs rounded border border-border-strong/50">
+                          <span className="px-2 py-1 bg-brand-strong/20 text-brand-strong text-xs rounded border border-border-strong/50">
                             Auth Required
                           </span>
                         )}
@@ -294,7 +294,7 @@ export default function APIDocumentation() {
                         )}
                         {route.response && (
                           <div>
-                            <h4 className="text-sm font-semibold text-neon-green mb-2">Response</h4>
+                            <h4 className="text-sm font-semibold text-success mb-2">Response</h4>
                             <div className="bg-bg-background-soft p-3 rounded text-sm">
                               <pre className="text-gray-300">{JSON.stringify(route.response, null, 2)}</pre>
                             </div>
@@ -302,7 +302,7 @@ export default function APIDocumentation() {
                         )}
                         <div className="bg-bg-background-soft p-3 rounded text-sm">
                           <h4 className="text-sm font-semibold text-brand mb-2">Example Request</h4>
-                          <pre className="text-neon-green text-xs whitespace-pre-wrap">
+                          <pre className="text-success text-xs whitespace-pre-wrap">
                             {route.method === "GET"
                               ? `fetch('${API_BASE}${route.path}', {
   credentials: 'include'

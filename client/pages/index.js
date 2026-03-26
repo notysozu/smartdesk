@@ -16,9 +16,9 @@ export default function LandingPage() {
       <div className="min-h-screen bg-background relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-neon-cyan opacity-10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-neon-pink opacity-10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
-          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-neon-purple opacity-10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }}></div>
+          <div className="absolute top-20 left-20 w-72 h-72 bg-brand opacity-10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-brand-strong opacity-10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-accent opacity-10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }}></div>
         </div>
 
         {/* Navbar */}
@@ -128,27 +128,27 @@ export default function LandingPage() {
               <h3 className="text-2xl font-bold text-brand-strong mb-4">Key Benefits</h3>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-start">
-                  <FontAwesomeIcon icon={faCheck} className="text-neon-green mr-2 mt-1" />
+                  <FontAwesomeIcon icon={faCheck} className="text-success mr-2 mt-1" />
                   <span>Centralized management of all university operations</span>
                 </li>
                 <li className="flex items-start">
-                  <FontAwesomeIcon icon={faCheck} className="text-neon-green mr-2 mt-1" />
+                  <FontAwesomeIcon icon={faCheck} className="text-success mr-2 mt-1" />
                   <span>AI-powered insights for data-driven decisions</span>
                 </li>
                 <li className="flex items-start">
-                  <FontAwesomeIcon icon={faCheck} className="text-neon-green mr-2 mt-1" />
+                  <FontAwesomeIcon icon={faCheck} className="text-success mr-2 mt-1" />
                   <span>Role-based access control for security</span>
                 </li>
                 <li className="flex items-start">
-                  <FontAwesomeIcon icon={faCheck} className="text-neon-green mr-2 mt-1" />
+                  <FontAwesomeIcon icon={faCheck} className="text-success mr-2 mt-1" />
                   <span>Real-time analytics and reporting</span>
                 </li>
                 <li className="flex items-start">
-                  <FontAwesomeIcon icon={faCheck} className="text-neon-green mr-2 mt-1" />
+                  <FontAwesomeIcon icon={faCheck} className="text-success mr-2 mt-1" />
                   <span>Scalable architecture for growth</span>
                 </li>
                 <li className="flex items-start">
-                  <FontAwesomeIcon icon={faCheck} className="text-neon-green mr-2 mt-1" />
+                  <FontAwesomeIcon icon={faCheck} className="text-success mr-2 mt-1" />
                   <span>Modern, intuitive user interface</span>
                 </li>
               </ul>

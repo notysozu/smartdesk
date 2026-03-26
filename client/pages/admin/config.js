@@ -100,9 +100,9 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
     const colors = {
       cyan: "border-border text-brand",
       pink: "border-border-strong text-brand-strong",
-      green: "border-neon-green text-neon-green",
-      blue: "border-neon-blue text-neon-blue",
-      purple: "border-neon-purple text-accent"
+      green: "border-success text-success",
+      blue: "border-brand text-brand",
+      purple: "border-accent text-accent"
     };
     return colors[color] || colors.cyan;
   };
@@ -124,7 +124,7 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <span className="mr-2"><FontAwesomeIcon icon={faHome} className="mr-2" /></span> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-border-strong/30 bg-neon-pink/10 text-brand-strong">
+            <div className="block px-4 py-3 rounded border border-border-strong/30 bg-brand-strong/10 text-brand-strong">
               <span className="mr-2"><FontAwesomeIcon icon={faCog} className="mr-2" /></span> Configuration
             </div>
           </nav>
@@ -163,7 +163,7 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
               <div className="text-sm text-gray-400">Courses</div>
             </div>
             <div className="futuristic-card text-center">
-              <div className="text-2xl font-bold text-neon-green">{stats.buildings || 0}</div>
+              <div className="text-2xl font-bold text-success">{stats.buildings || 0}</div>
               <div className="text-sm text-gray-400">Buildings</div>
             </div>
             <div className="futuristic-card text-center">
@@ -180,7 +180,7 @@ export default function ConfigDashboard({ configs: initialConfigs, stats }) {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-6 py-3 font-semibold transition-all whitespace-nowrap ${
                   selectedCategory === cat.id
-                    ? `text-${cat.color === "cyan" ? "neon-cyan" : cat.color === "pink" ? "neon-pink" : cat.color === "green" ? "neon-green" : cat.color === "blue" ? "neon-blue" : "neon-purple"} border-b-2 border-${cat.color === "cyan" ? "neon-cyan" : cat.color === "pink" ? "neon-pink" : cat.color === "green" ? "neon-green" : cat.color === "blue" ? "neon-blue" : "neon-purple"}`
+                    ? `text-${cat.color === "cyan" ? "brand" : cat.color === "pink" ? "brand-strong" : cat.color === "green" ? "success" : cat.color === "blue" ? "brand" : "accent"} border-b-2 border-${cat.color === "cyan" ? "brand" : cat.color === "pink" ? "brand-strong" : cat.color === "green" ? "success" : cat.color === "blue" ? "brand" : "accent"}`
                     : "text-gray-400 hover:text-brand"
                 }`}
               >

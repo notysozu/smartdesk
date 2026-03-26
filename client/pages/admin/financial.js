@@ -97,7 +97,7 @@ export default function FinancialDashboard() {
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-green/30 bg-neon-green/10 text-neon-green">
+            <div className="block px-4 py-3 rounded border border-success/30 bg-success/10 text-success">
               <FontAwesomeIcon icon={faMoneyBillWave} className="mr-2" /> Financial
             </div>
           </nav>
@@ -121,7 +121,7 @@ export default function FinancialDashboard() {
                 onClick={() => setActiveTab(tab)}
                 className={`px-6 py-3 font-semibold capitalize transition-all ${
                   activeTab === tab
-                    ? "text-neon-green border-b-2 border-neon-green"
+                    ? "text-success border-b-2 border-success"
                     : "text-gray-400 hover:text-brand"
                 }`}
               >
@@ -153,10 +153,10 @@ export default function FinancialDashboard() {
                   </thead>
                   <tbody>
                     {fees.map((fee) => (
-                      <tr key={fee._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
+                      <tr key={fee._id} className="border-b border-border/10 hover:bg-brand/5">
                         <td className="py-3 px-4 text-white">{fee.student?.username || "—"}</td>
                         <td className="py-3 px-4 text-gray-400">{fee.description}</td>
-                        <td className="py-3 px-4 text-neon-green font-bold">${fee.amount}</td>
+                        <td className="py-3 px-4 text-success font-bold">${fee.amount}</td>
                         <td className="py-3 px-4 text-brand">{new Date(fee.dueDate).toLocaleDateString()}</td>
                         <td className="py-3 px-4">
                           <span className={`px-3 py-1 rounded text-xs ${
@@ -188,9 +188,9 @@ export default function FinancialDashboard() {
                 </thead>
                 <tbody>
                   {scholarships.map((sch) => (
-                    <tr key={sch._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
+                    <tr key={sch._id} className="border-b border-border/10 hover:bg-brand/5">
                       <td className="py-3 px-4 text-white">{sch.student?.username || "—"}</td>
-                      <td className="py-3 px-4 text-neon-green font-bold">${sch.amount}</td>
+                      <td className="py-3 px-4 text-success font-bold">${sch.amount}</td>
                       <td className="py-3 px-4 text-gray-400">{sch.description}</td>
                       <td className="py-3 px-4">
                         <span className={`px-3 py-1 rounded text-xs ${

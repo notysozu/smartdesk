@@ -121,7 +121,7 @@ export default function AcademicDashboard() {
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <FontAwesomeIcon icon={faHome} className="mr-2" /> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-green/30 bg-neon-green/10 text-neon-green">
+            <div className="block px-4 py-3 rounded border border-success/30 bg-success/10 text-success">
               <FontAwesomeIcon icon={faBook} className="mr-2" /> Academic
             </div>
           </nav>
@@ -145,7 +145,7 @@ export default function AcademicDashboard() {
                 onClick={() => setActiveTab(tab)}
                 className={`px-6 py-3 font-semibold capitalize transition-all ${
                   activeTab === tab
-                    ? "text-neon-green border-b-2 border-neon-green"
+                    ? "text-success border-b-2 border-success"
                     : "text-gray-400 hover:text-brand"
                 }`}
               >
@@ -176,8 +176,8 @@ export default function AcademicDashboard() {
                   </thead>
                   <tbody>
                     {departments.map((dept) => (
-                      <tr key={dept._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
-                        <td className="py-3 px-4 text-neon-green font-bold">{dept.code}</td>
+                      <tr key={dept._id} className="border-b border-border/10 hover:bg-brand/5">
+                        <td className="py-3 px-4 text-success font-bold">{dept.code}</td>
                         <td className="py-3 px-4 text-white">{dept.name}</td>
                         <td className="py-3 px-4 text-gray-400">{dept.description || "—"}</td>
                         <td className="py-3 px-4">
@@ -218,8 +218,8 @@ export default function AcademicDashboard() {
                   </thead>
                   <tbody>
                     {courses.map((course) => (
-                      <tr key={course._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
-                        <td className="py-3 px-4 text-neon-green font-bold">{course.code}</td>
+                      <tr key={course._id} className="border-b border-border/10 hover:bg-brand/5">
+                        <td className="py-3 px-4 text-success font-bold">{course.code}</td>
                         <td className="py-3 px-4 text-white">{course.name}</td>
                         <td className="py-3 px-4 text-gray-400">{course.department?.name || "—"}</td>
                         <td className="py-3 px-4 text-brand">{course.credits}</td>
@@ -247,13 +247,13 @@ export default function AcademicDashboard() {
                   </thead>
                   <tbody>
                     {enrollments.map((enrollment) => (
-                      <tr key={enrollment._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
+                      <tr key={enrollment._id} className="border-b border-border/10 hover:bg-brand/5">
                         <td className="py-3 px-4 text-white">{enrollment.student?.username || "—"}</td>
                         <td className="py-3 px-4 text-gray-400">{enrollment.course?.name || "—"}</td>
                         <td className="py-3 px-4 text-brand">{enrollment.semester}</td>
-                        <td className="py-3 px-4 text-neon-green font-bold">{enrollment.grade || "I"}</td>
+                        <td className="py-3 px-4 text-success font-bold">{enrollment.grade || "I"}</td>
                         <td className="py-3 px-4">
-                          <span className="px-3 py-1 rounded text-xs bg-neon-blue/20 text-neon-blue">
+                          <span className="px-3 py-1 rounded text-xs bg-brand/20 text-brand">
                             {enrollment.status}
                           </span>
                         </td>

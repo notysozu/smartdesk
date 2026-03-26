@@ -106,7 +106,7 @@ export default function TopicsDashboard({ initialTopics }) {
             <Link href="/admin" className="block px-4 py-3 rounded border border-border-strong text-gray-400 hover:text-brand transition-all">
               <span className="mr-2">🏠</span> Dashboard
             </Link>
-            <div className="block px-4 py-3 rounded border border-neon-purple/30 bg-neon-purple/10 text-accent">
+            <div className="block px-4 py-3 rounded border border-accent/30 bg-accent/10 text-accent">
               <span className="mr-2">💬</span> Topics
             </div>
           </nav>
@@ -149,11 +149,11 @@ export default function TopicsDashboard({ initialTopics }) {
               </thead>
               <tbody>
                 {topics.map((topic) => (
-                  <tr key={topic._id} className="border-b border-border/10 hover:bg-neon-cyan/5">
+                  <tr key={topic._id} className="border-b border-border/10 hover:bg-brand/5">
                     <td className="py-3 px-4 text-white font-semibold">{topic.topic}</td>
                     <td className="py-3 px-4 text-gray-400 max-w-md truncate">{topic.description}</td>
                     <td className="py-3 px-4">
-                      <span className="px-3 py-1 rounded text-xs bg-neon-cyan/20 text-brand border border-border/50">
+                      <span className="px-3 py-1 rounded text-xs bg-brand/20 text-brand border border-border/50">
                         {topic.category}
                       </span>
                     </td>
