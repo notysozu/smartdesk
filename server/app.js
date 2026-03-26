@@ -24,6 +24,10 @@ function getAllowedOrigins() {
     .filter(Boolean);
 }
 
+function getHealthStatus() {
+  return { ok: true, timestamp: new Date().toISOString() };
+}
+
 // CORS middleware
 function corsForClient(req, res, next) {
   const origin = req.headers.origin;
@@ -56,9 +60,7 @@ app.use(corsForClient);
 app.use(securityMiddleware);
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/health", (req, res) =>
-  res.json({ ok: true, timestamp: new Date().toISOString() })
-);
+app.get("/health", (req, res) => res.json(getHealthStatus()));
 
 app.get(
   "/api/announcements",
@@ -77,4 +79,4 @@ app.use(configRoutes);
 
 app.use(errorHandler);
 
-module.exports = app;
+module.exports = { app, getAllowedOrigins, getHealthStatus };
