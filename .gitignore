@@ -1,6 +1,8 @@
 node_modules/
 npm-debug.log*
 .env
+.env.local
+.env.*.local
 .DS_Store
 .vscode/
 .idea/
@@ -9,5 +11,6 @@ logs/
 *.gguf
 .next/
 client/.next/
+.vercel/
 *.hot-update.js
 *.hot-update.json
