@@ -3,7 +3,6 @@ const router = express.Router();
 const { protect } = require("../middleware/auth.middleware");
 const userController = require("../controllers/user.controller");
 
-// All routes require admin role
 router.use(protect("admin"));
 
 router.get("/api/users", userController.getAllUsers);
