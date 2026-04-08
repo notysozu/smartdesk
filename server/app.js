@@ -5,7 +5,6 @@ const cookieParser = require("cookie-parser");
 const securityMiddleware = require("./middleware/security.middleware");
 const errorHandler = require("./middleware/error.middleware");
 
-// Routes
 const authRoutes = require("./routes/auth.routes");
 const studentRoutes = require("./routes/student.routes");
 const adminRoutes = require("./routes/admin.routes");
@@ -28,7 +27,6 @@ function getHealthStatus() {
   return { ok: true, timestamp: new Date().toISOString() };
 }
 
-// CORS middleware
 function corsForClient(req, res, next) {
   const origin = req.headers.origin;
   const allowedOrigins = getAllowedOrigins();
