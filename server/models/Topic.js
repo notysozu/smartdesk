@@ -45,7 +45,6 @@ const topicSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Index for search
 topicSchema.index({ topic: "text", description: "text" });
 
 module.exports = mongoose.model("Topic", topicSchema);
