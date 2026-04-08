@@ -8,7 +8,6 @@ async function seed() {
   try {
     await connectDB();
 
-    // Clear and recreate admin user
     await User.deleteOne({ username: "admin" });
     const admin = await User.create({
       username: "admin",
@@ -33,7 +32,6 @@ async function seed() {
     });
     console.log("✅ Admin created:", admin.username);
 
-    // Clear and recreate student user
     await User.deleteOne({ username: "student" });
     const student = await User.create({
       username: "student",
@@ -50,7 +48,6 @@ async function seed() {
     });
     console.log("✅ Student created:", student.username);
 
-    // Create sample roles
     const roles = [
       { username: "librarian", email: "librarian@smartdesk.com", password: "lib123", role: "librarian" },
       { username: "hostel_manager", email: "hostel@smartdesk.com", password: "hostel123", role: "hostel_manager" },
@@ -67,14 +64,12 @@ async function seed() {
       }
     }
 
-    // Verify login works
     const testAdmin = await User.findOne({ username: "admin" }).select("+password");
     const testPass = await testAdmin.comparePassword("admin123");
     console.log("✅ Password verification:", testPass ? "PASS" : "FAIL");
 
-    // Create sample announcements
     const Announcement = require("./models/Announcement");
-    await Announcement.deleteMany({}); // Clear existing for testing
+    await Announcement.deleteMany({});
     const announcements = [
       {
         title: "Welcome to SmartDesk!",
